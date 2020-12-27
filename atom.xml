@@ -95,26 +95,6 @@
   </entry>
   
   <entry>
-    <title>技术 · 杂谈 ～ 测试版_01</title>
-    <link href="/2020/07/20/tec/other/other_01/"/>
-    <id>/2020/07/20/tec/other/other_01/</id>
-    <published>2020-07-20T07:29:01.000Z</published>
-    <updated>2020-12-07T10:00:10.849Z</updated>
-    
-    <content type="html"><![CDATA[<hr><h2 id="tec-技术-杂谈"><a href="#tec-技术-杂谈" class="headerlink" title="  tec-技术 @ 杂谈"></a>  tec-技术 @ 杂谈</h2>]]></content>
-    
-    <summary type="html">
-    
-      安装Vue教程
-    
-    </summary>
-    
-    
-      <category term="other" scheme="/tec/other/"/>
-    
-  </entry>
-  
-  <entry>
     <title>技术 · 编程 ～ 测试版_01</title>
     <link href="/2020/07/20/tec/code/code_01/"/>
     <id>/2020/07/20/tec/code/code_01/</id>
@@ -131,6 +111,26 @@
     
     
       <category term="技术 · 编程" scheme="/tec/%E6%8A%80%E6%9C%AF-%C2%B7-%E7%BC%96%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>技术 · 杂谈 ～ 测试版_01</title>
+    <link href="/2020/07/20/tec/other/other_01/"/>
+    <id>/2020/07/20/tec/other/other_01/</id>
+    <published>2020-07-20T07:29:01.000Z</published>
+    <updated>2020-12-07T10:00:10.849Z</updated>
+    
+    <content type="html"><![CDATA[<hr><h2 id="tec-技术-杂谈"><a href="#tec-技术-杂谈" class="headerlink" title="  tec-技术 @ 杂谈"></a>  tec-技术 @ 杂谈</h2>]]></content>
+    
+    <summary type="html">
+    
+      安装Vue教程
+    
+    </summary>
+    
+    
+      <category term="other" scheme="/tec/other/"/>
     
   </entry>
   
