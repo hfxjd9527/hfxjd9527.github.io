@@ -164,7 +164,7 @@ function bot_ui_ini() {
             botui.message.add({
                 delay: 600,
                 // content: "😘"
-                content: "![...](https://cdn.jsdelivr.net/gh/hfxjd9527/blog-assets@1.07/img/custom/donate/mua.gif)"
+                content: "![...](https://cdn.jsdelivr.net/gh/hfxjd9527/blog_img@main/haha.gif)"
 
             })
         }

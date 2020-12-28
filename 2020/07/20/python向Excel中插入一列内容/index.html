@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">StarryMusic</title>
+  <title itemprop="name">python向Excel中插入一列内容 | StarryMusic</title>
   
     <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -288,232 +288,155 @@
   </div>
 </header>
 
-      <div class="blank" style="padding-top: 0px;"></div>
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://cdn.jsdelivr.net/gh/hfxjd9527/blog_img@master/zxc.jpg);" src="https://cdn.jsdelivr.net/gh/hfxjd9527/blog-assets@1.08/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/hfxjd9527/blog_img@master/zxc.jpg">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      python向Excel中插入一列内容</h1>
+      <p class="entry-census">
+        <span>
+          <a href="https://starrymusic.xyz/about/">
+            <img src="/images/avatar2.jpg">
+          </a>
+        </span>
+        <span>
+          <a href="https://starrymusic.xyz/about/">星 空</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2020-7-20<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+    </header>
+  </div>
+
 <div id="content" class="site-content">
-  
-  <div class="top-feature-row">
-  <h1 class="fes-title" style="font-family: 'Ubuntu', sans-serif;">
-  <i class="fa fa-anchor" aria-hidden="true">
-  </i>
-  START:DASH!!</h1>
-  
-  <div class="top-feature-v2">
-    <div class="the-feature square from_left_and_right">
-      <a href="/theme-sakura/" target="_blank">
-        <div class="img">
-          <img src="https://cdn.jsdelivr.net/gh/hfxjd9527/blog-assets@1.08/img/startdash/sakura.md.png">
-        </div>
-        <div class="info">
-          <h3>Sakura</h3>
-          <p>本站 hexo 主题</p>
-        </div>
-      </a>
-    </div>
-  </div>
-  
-  <div class="top-feature-v2">
-    <div class="the-feature square from_left_and_right">
-      <a href="http://space.bilibili.com/259258624" target="_blank">
-        <div class="img">
-          <img src="https://cdn.jsdelivr.net/gh/hfxjd9527/blog-assets@1.08/img/startdash/bilibili.jpg">
-        </div>
-        <div class="info">
-          <h3>Bilibili</h3>
-          <p>博主的b站视频</p>
-        </div>
-      </a>
-    </div>
-  </div>
-  
-  <div class="top-feature-v2">
-    <div class="the-feature square from_left_and_right">
-      <a href="/" target="_blank">
-        <div class="img">
-          <img src="https://cdn.jsdelivr.net/gh/hfxjd9527/blog-assets@1.08/img/startdash/wangshiwu.jpg">
-        </div>
-        <div class="info">
-          <h3>星空的杂货铺</h3>
-          <p>记录日常</p>
-        </div>
-      </a>
-    </div>
-  </div>
-  
-</div>
   <div id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
-      <h1 class="main-title" style="font-family: 'Ubuntu', sans-serif;">
-      <i class="fa fa-envira" aria-hidden="true"></i>
-      Discovery</h1>
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <p>在第一列插入一列日期：<br><img src="https://cdn.jsdelivr.net/gh/hfxjd9527/blog_img@main/clipboard1.png" alt="images"><br>执行代码后如下所示：<br><img src="https://cdn.jsdelivr.net/gh/hfxjd9527/blog_img@main/clipboard1.png" alt="images"> </p>
+<pre><code class="python"># coding:utf-8
+from openpyxl import Workbook, load_workbook
+file_info = &#39;./excel_test/1.xlsx&#39;
+wb = load_workbook(file_info)
+ws = wb.worksheets[0]
+ws.insert_cols(1)
+for index, row in enumerate(ws.rows):
+    if index == 0:
+        row[0].value = &#39;日期&#39;
+    else:
+        row[0].value = &#39;2020-08-27&#39;
+
+wb.save(&#39;./excel_test/3.xlsx&#39;)
+
+# row[0]与insert_cols(1)有对应关系，两者相差1
+</code></pre>
+
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/hfxjd9527/blog-assets@1.08/img/custom/donate/AliPayQR1.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/hfxjd9527/blog-assets@1.08/img/custom/donate/WeChanQR1.png"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center;width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+          
+            <div class="post-nepre half previous">
+          
+            <a href="/2020/12/04/1.为什么要做CICD/" rel="prev">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/hfxjd9527/blog-assets@1.08/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/hfxjd9527/blog_img@main/02_3.png" style="width: 100%;height: 100%;object-fit: cover;pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/hfxjd9527/blog_img@main/02_3.png">
+              </div>
+              <span class="label">
+              Previous Post</span>
+              <div class="info">
+                <h3>
+                01-为什么要做CI/CD？</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+        
+          
+            <div class="post-nepre half next">
+          
+            <a href="/2020/07/20/tec/software/批量修改文件名/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/hfxjd9527/blog-assets@1.08/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/hfxjd9527/blog_img@master/daily.jpg" style="width: 100%;height: 100%;object-fit: cover;pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/hfxjd9527/blog_img@master/daily.jpg">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                批量修改文件名</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
       
-  <!-- 首页默认取最最新文章集 -->
-  
-    
-<article  class="post post-list-thumb post-list-thumb-left"  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();valine.init({
+        el: '#vcomments',
+        appId: "bczUNaxHjOUz63D94Yw5dsar-gzGzoHsz",
+        appKey: "8HAfLX9oICaQRFRS3Q9iHj0M",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
 
-  <div class="post-thumb">
-    <a href="/2020/12/28/2.Gitlab_CICD简介/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/hfxjd9527/blog-assets@1.08/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/hfxjd9527/blog-assets@1.08/img/other/wallhaven-672007-1-1024x576.png">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-12-28 14:12</div>
-      <a href="/2020/12/28/2.Gitlab_CICD简介/" class="post-title">
-        <h3>02-GitLab CI/CD功能简介</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tec/devops/">devops<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p>GitLab CI/CD功能简介</p>
-        <div class="post-bottom">
-          <a href="/2020/12/28/2.Gitlab_CICD简介/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+          <a href="https://starrymusic.xyz/about/" class="profile gravatar"><img src="/images/avatar2.jpg" itemprop="image" alt="星 空" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="https://starrymusic.xyz/about/" itemprop="url" rel="author">星 空</a>
+            </h3>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2020/12/04/1.为什么要做CICD/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/hfxjd9527/blog-assets@1.08/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/hfxjd9527/blog_img@main/02_3.png">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-12-4 14:12</div>
-      <a href="/2020/12/04/1.为什么要做CICD/" class="post-title">
-        <h3>01-为什么要做CI/CD？</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tec/devops/">devops<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p></p>
-        <div class="post-bottom">
-          <a href="/2020/12/04/1.为什么要做CICD/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb post-list-thumb-left"  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2020/07/20/python向Excel中插入一列内容/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/hfxjd9527/blog-assets@1.08/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/hfxjd9527/blog_img@master/zxc.jpg">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-7-20 15:07</div>
-      <a href="/2020/07/20/python向Excel中插入一列内容/" class="post-title">
-        <h3>python向Excel中插入一列内容</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tec/code/">code<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/essay/python/">python</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p></p>
-        <div class="post-bottom">
-          <a href="/2020/07/20/python向Excel中插入一列内容/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2020/07/20/tec/software/批量修改文件名/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/hfxjd9527/blog-assets@1.08/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/hfxjd9527/blog_img@master/daily.jpg">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-7-20 15:07</div>
-      <a href="/2020/07/20/tec/software/批量修改文件名/" class="post-title">
-        <h3>批量修改文件名</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tec/software/">software<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p>批量修改文件名</p>
-        <div class="post-bottom">
-          <a href="/2020/07/20/tec/software/批量修改文件名/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-
-
-    </main>
-      <!-- 首页默认取最最新文章集 -->
-    <!--  -->
-  </div>
-  
+        <hr>
+        <p><i class="iconfont icon-write"></i>世界碎掉了，但潮汐在牡蛎心里</p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
 </div>
+
+
 
     </div>    
     <div class="ins-search">

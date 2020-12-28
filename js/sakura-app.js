@@ -256,7 +256,7 @@ function code_highlight_style () {
       'autocapitalize': 'off',
       'spellcheck': 'false',
       'contenteditable': 'false',
-      'design': 'by hojun'
+      'design': 'by 星空'
     }
     var ele_name = $('pre:eq(' + i + ')')[0].children[0].className
     var lang = ele_name.substr(0, ele_name.indexOf(' ')).replace('language-', '')
@@ -1642,7 +1642,7 @@ $(function () {
     $(this).postLike()
   })
   console.log('%c Mashiro %c', 'background:#24272A; color:#ffffff', '', 'https://2heng.xin/')
-  console.log('%c hojun %c', 'background:#24272A; color:#ffffff', '', 'https://www.hojun.cn/')
+  console.log('%c 星空 %c', 'background:#24272A; color:#ffffff', '', 'https://www.星空.cn/')
   console.log('%c Github %c', 'background:#24272A; color:#ffffff', '', 'https://github.com/honjun/hexo-theme-sakura')
 })
 var isWebkit = navigator.userAgent.toLowerCase().indexOf('webkit') > -1,
