@@ -3909,7 +3909,7 @@ li.feature-2 {
     }
 }
 .headertop::before {
-    content:'';
+    /*content:'';*/
     position:absolute;
     top:0;
     bottom:0;
@@ -4005,6 +4005,7 @@ li.feature-2 {
     margin: 0;
     padding: 0;
     width: 100%;
+    height: 75%;
     z-index: 0;
 }
 }.blank {
