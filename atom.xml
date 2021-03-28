@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2020-12-28T06:44:12.528Z</updated>
+  <updated>2021-03-28T13:42:12.629Z</updated>
   <id>/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>k8s多集群管理工具kubectl+kubecm+kubectx</title>
+    <link href="/2021/03/28/k8s%E5%A4%9A%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7kubectl+kubecm+kubectx/"/>
+    <id>/2021/03/28/k8s多集群管理工具kubectl+kubecm+kubectx/</id>
+    <published>2021-03-28T13:29:01.000Z</published>
+    <updated>2021-03-28T13:42:12.629Z</updated>
+    
+    <content type="html"><![CDATA[<p>kubectl<a href="https://kubernetes.io/zh/docs/tasks/tools/install-kubectl/" target="_blank" rel="noopener">安装与使用</a>  </p><h2 id="1-安装kubecm"><a href="#1-安装kubecm" class="headerlink" title="1.安装kubecm"></a>1.安装kubecm</h2><p>mac电脑安装方式：</p><pre><code class="shell">brew install sunny0826/tap/kubecm</code></pre><p>如果无法访问github或者访问较慢，需要科学上网</p><h2 id="2-使用kubecm"><a href="#2-使用kubecm" class="headerlink" title="2.使用kubecm"></a>2.使用kubecm</h2><h4 id="2-1-初次使用"><a href="#2-1-初次使用" class="headerlink" title="2.1.初次使用"></a>2.1.初次使用</h4><p>安装完成后，新建个文件夹，随便命名，比方叫做hexk8s，将rancher上kubeconfig文件复制下来放到该文件夹下，根据不同项目，给config文件起个名字。<br><img src="https://cdn.jsdelivr.net/gh/hfxjd9527/blog_img@main/cfg.png" alt="images"><br>然后执行命令（回到hexk8s上级目录）</p><pre><code class="shell">kubecm merge -f hexk8s </code></pre><p>选择true，让其overwite ~/.kube/config文件</p><h4 id="2-2-添加项目config文件"><a href="#2-2-添加项目config文件" class="headerlink" title="2.2.添加项目config文件"></a>2.2.添加项目config文件</h4><p>如果下次有新的项目config需要加进来，在该文件夹下，新建一个项目名-config文件，比如xiaomian-config</p><pre><code class="shell">kubecm add -f xiaomian-config</code></pre><p>选择true让其overwrite</p><h4 id="2-3-删除某个项目"><a href="#2-3-删除某个项目" class="headerlink" title="2.3.删除某个项目"></a>2.3.删除某个项目</h4><pre><code class="shell">kubecm delete</code></pre><p>按上下方向键选出自己要删的，回车，然后true，就可以删除了</p><p>####2.4.选择自己要看的项目</p><pre><code class="shell">kubecm switch</code></pre><p>如果项目较多，可以像使用vim编辑文件一样，使用/查找，选中后，回车即可进到该项目，进到里面后，结下来的操作，就是kubectl之前的操作了</p><h2 id="3-安装kubectx"><a href="#3-安装kubectx" class="headerlink" title="3.安装kubectx"></a>3.安装kubectx</h2><p>上面虽然可以切换项目，但是不能锁定namespace，查看pod还要带上-n namespace_name还是不够便捷<br>先安装fzf模糊搜索，不分开讲它的使用，具体可参考：<a href="https://github.com/junegunn/fzf" target="_blank" rel="noopener">fzf</a></p><pre><code class="shell">brew install fzf</code></pre><p>kubectx的功能其实相当于kubecm switch，主要实现项目的切换</p><pre><code class="shell">brew install kubectx</code></pre><p>安装后，直接在终端输入kubectx，就可以选择自己要进去的项目，前提是有过上面那种配置<br>kubens命令可以看到当前环境所有的namespace，可以快速选择NS，选择NS之后执行的命令就是在当前NS中执行了，比如执行kubectl get pods 显示的就是当前NS所有的pod，不需要加上-n xxxx</p>]]></content>
+    
+    <summary type="html">
+    
+      k8s多集群管理工具kubectl+kubecm+kubectx
+    
+    </summary>
+    
+      <category term="devops" scheme="/essay/devops/"/>
+    
+    
+      <category term="devops" scheme="/tec/devops/"/>
+    
+  </entry>
   
   <entry>
     <title>02-GitLab CI/CD功能简介</title>
