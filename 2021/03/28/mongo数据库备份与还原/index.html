@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">01-为什么要做CI/CD？ | StarryMusic</title>
+  <title itemprop="name">mongo数据库备份与还原 | StarryMusic</title>
   
     <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -301,11 +301,11 @@
 
   <div class="pattern-center single-center">
     <!-- 有配图默认渲染第一张 -->
-    <div class="pattern-attachment-img lazyload" style="background-image: url(https://cdn.jsdelivr.net/gh/hfxjd9527/blog_img@main/02_3.png);" src="https://cdn.jsdelivr.net/gh/hfxjd9527/blog-assets@1.08/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/hfxjd9527/blog_img@main/02_3.png">
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://cdn.jsdelivr.net/gh/hfxjd9527/blog_img@main/mongodb.png);" src="https://cdn.jsdelivr.net/gh/hfxjd9527/blog-assets@1.08/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/hfxjd9527/blog_img@main/mongodb.png">
     </div>
     <header class="pattern-header single-header">
       <h1 class="entry-title">
-      01-为什么要做CI/CD？</h1>
+      mongo数据库备份与还原</h1>
       <p class="entry-census">
         <span>
           <a href="https://starrymusic.xyz/about/">
@@ -317,7 +317,7 @@
         </span>
         <span class="bull">
         ·</span>
-        2020-12-4<span class="bull">
+        2021-3-28<span class="bull">
         ·</span>
       <span id="busuanzi_value_page_pv"></span>次阅读</p>
     </header>
@@ -331,38 +331,97 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h2 id="背景-传统的应用开发发布模式"><a href="#背景-传统的应用开发发布模式" class="headerlink" title="背景-传统的应用开发发布模式"></a>背景-传统的应用开发发布模式</h2><p><strong>开发团队</strong> 在开发环境中完成软件开发，单元测试，测试通过，提交到代码版本管理库。</p>
-<p><strong>运维团队</strong> 把应用部署到测试环境，供QA团队测试，测试通过后部署生产环境。</p>
-<p><strong>QA 团队</strong> 进行测试，测试通过后通知部署人员发布到生产环境。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/hfxjd9527/blog_img@main/01_1.png" alt="images"></p>
-<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p><strong>错误发现不及时</strong>  很多 错误在项目的早期可能就存在，到最后集成的时候才发现问题。</p>
-<p><strong>人工低级错误发生</strong> 产品和服务交付中的关键活动全都需要手动操作。</p>
-<p><strong>团队工作效率低</strong> 需要等待他人的工作完成后才能进行自己的工作。</p>
-<p><strong>开发运维对立 </strong>  开发人员想要快速更新，运维人员追求稳定，各自的针对的方向不同。</p>
-<p>经过上述问题我们需要作出改变，如何改变？</p>
-<hr>
-<h2 id="持续集成与持续交付"><a href="#持续集成与持续交付" class="headerlink" title="持续集成与持续交付"></a>持续集成与持续交付</h2><p>软件开发的连续方法基于自动执行脚本，以最大程度地减少在开发应用程序时引入错误的机会。从开发新代码到部署新代码，他们几乎不需要人工干预，甚至根本不需要干预。</p>
-<p>它涉及到在每次小的迭代中就不断地构建，测试和部署代码更改，从而减少了基于错误或失败的先前版本开发新代码的机会。</p>
-<p>此方法有三种主要方法，每种方法都将根据最适合您的策略的方式进行应用。</p>
-<h3 id="持续集成-（CI）"><a href="#持续集成-（CI）" class="headerlink" title="持续集成 （CI）"></a>持续集成 （CI）</h3><p>持续合并开发人员正在开发编写的所有代码的一种做法。通常一天内进行多次合并和提交代码，从存储库或生产环境中进行构建和自动化测试，以确保没有集成问题并及早发现任何问题。</p>
-<p><strong>开发人员提交代码的时候一般先在本地测试验证，只要开发人员提交代码到版本控制系统就会触发一条提交流水线，对本次提交进行验证。</strong></p>
-<h3 id="持续交付-（CD）"><a href="#持续交付-（CD）" class="headerlink" title="持续交付 （CD）"></a>持续交付 （CD）</h3><p><a href="https://continuousdelivery.com/" target="_blank" rel="noopener">持续交付</a>是超越持续集成的一步。不仅会在推送到代码库的每次代码更改时都进行构建和测试，而且，作为附加步骤，即使部署是手动触发的，它也可以连续部署。此方法可确保自动检查代码，但需要人工干预才能从策略上手动触发更改的部署。</p>
-<h3 id="持续部署-CD"><a href="#持续部署-CD" class="headerlink" title="持续部署   (CD)"></a>持续部署   (CD)</h3><p>通常可以通过将更改自动推送到发布系统来随时将软件发布到生产环境中。持续部署 会更进一步，并自动将更改推送到生产中。类似于持续交付，<a href="https://www.airpair.com/continuous-deployment/posts/continuous-deployment-for-practical-people" target="_blank" rel="noopener">持续部署</a>也是超越持续集成的又一步。不同之处在于，您无需将其手动部署，而是将其设置为自动部署。部署您的应用程序完全不需要人工干预。</p>
-<hr>
-<h2 id="CICD的价值体现"><a href="#CICD的价值体现" class="headerlink" title="CICD的价值体现"></a>CICD的价值体现</h2><ul>
-<li>尽早反馈，尽早发现错误。</li>
-<li>减少集成问题，每次发现问题当时解决，避免问题堆积。</li>
-<li>每次更改都能成功发布，降低发布风险。</li>
-<li>更加频繁的交付价值，客户反馈。</li>
-</ul>
-<hr>
-<h2 id="推荐常用的CI-CD工具"><a href="#推荐常用的CI-CD工具" class="headerlink" title="推荐常用的CI/CD工具"></a>推荐常用的CI/CD工具</h2><h3 id="Jenkins"><a href="#Jenkins" class="headerlink" title="Jenkins"></a>Jenkins</h3><p>专业的CI工具，可扩展自动化服务器、安装配置简单、丰富的插件库、分布式架构设计、支持所有的平台、可视化的管理页面。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/hfxjd9527/blog_img@main/01_3.png" alt="images"></p>
-<h3 id="GitLab"><a href="#GitLab" class="headerlink" title="GitLab"></a>GitLab</h3><p>端到端DevOps工具，常用功能：代码审查、问题跟踪、动态订阅、易于扩展、项目wiki、多角色项目管理、项目代码在线编译预览、CI工具集成。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/hfxjd9527/blog_img@main/01_2.png" alt="images"></p>
-<p>提交合并代码集成 ：通过git push 进行操作或者在GitLab Web页面操作。</p>
-<p>发布应用到服务器 ： 获取制品库中的应用，然后用salt、ansible发布部署到服务器。</p>
-<p>完全自动化： 提交代码-&gt; 构建部署 -&gt; 发布</p>
+          <p>公司在20年将客户19年及之前的数据给归档了，现在他们想要做BI项目，需要将这些数据给捞出来，这篇文章主要介绍mongo数据的备份与恢复。<br>mongo及组件的安装<a href="https://blog.csdn.net/zhuchuangang/article/details/51202752" target="_blank" rel="noopener">参考文章</a></p>
+<h2 id="1-本地模拟"><a href="#1-本地模拟" class="headerlink" title="1.本地模拟"></a>1.本地模拟</h2><p>先在虚拟机上模拟一下备份与还原，然后再实操</p>
+<h4 id="1-1-在虚拟机上安装配置mongo"><a href="#1-1-在虚拟机上安装配置mongo" class="headerlink" title="1.1.在虚拟机上安装配置mongo"></a>1.1.在虚拟机上安装配置mongo</h4><p>下面以安装mongodb3.x为例。mongoDB正式提供packge安装支持，在他们的仓库中包含下面的包：</p>
+<pre><code class="shell">mongodb-org：这个包会自动安装下面所有的组件包
+mongodb-org-server: 包含mongod，和相关配置和初始脚本
+mongodb-org-mongos: 包含mongos
+mongodb-org-shell: 包含mongo脚本
+mongodb-org-tools: 包含下面的mongodb工具：mongoimport bsondump,mongodump,mongoexport,mongofiles,
+mongoplog,mongoperf,mongorestore,mongostat和mongotop
+</code></pre>
+<p>创建yum仓库文件repo</p>
+<p>vi /etc/yum.repos.d/mongodb-org-3.2.repo</p>
+<pre><code class="shell">[mongodb-org-3.2]
+name=MongoDB Repository
+baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/3.2/x86_64/
+gpgcheck=1
+enabled=1
+gpgkey=https://www.mongodb.org/static/pgp/server-3.2.asc
+</code></pre>
+<p>安装mongo及所有的mongodb组件：</p>
+<pre><code class="shell">yum install -y mongodb-org-3.2.5 mongodb-org-server-3.2.5 mongodb-org-shell-3.2.5 mongodb-org-mongos-3.2.5 mongodb-org-tools-3.2.5
+</code></pre>
+<p>安装完成之后，为了防止意外升级，可以在/etc/yum.conf中加入下面的配置防止意外升级：</p>
+<pre><code class="shell">exclude=mongodb-org,mongodb-org-server,mongodb-org-shell,mongodb-org-mongos,mongodb-org-tools
+</code></pre>
+<p>如果遇到启动失败的问题，可以关闭SELinux</p>
+<pre><code class="shell">setenforce 0 
+</code></pre>
+<p>启动mongo<br><code>`</code>shell script<br>systemctl start mongod</p>
+<pre><code>配置开机启动
+```shell
+systemctl enable mongod
+</code></pre><p>mongo设置账号密码（可以在navicat中通过查询的方式创建，选择admin数据库）：</p>
+<pre><code class="js">db.createUser(
+    {
+        user:&quot;root&quot;,
+        pwd:&quot;123456&quot;,
+        roles:[{role:&quot;root&quot;,db:&quot;admin&quot;}]
+    }
+);
+</code></pre>
+<p>以上，就可以使用navicat进行连接mongo了<br><img src="https://cdn.jsdelivr.net/gh/hfxjd9527/blog_img@main/mongo_restore1.png" alt="images">  </p>
+<h4 id="1-2-如若卸载"><a href="#1-2-如若卸载" class="headerlink" title="1.2.如若卸载"></a>1.2.如若卸载</h4><p>停止mongo</p>
+<pre><code class="shell">systemctl stop mongod
+</code></pre>
+<p>卸载mongo<br>删除之前安装的mongodb的相关包:</p>
+<pre><code class="shell">yum erase $(rpm -qa | grep mongodb-org)
+</code></pre>
+<p>删除相关文件夹</p>
+<pre><code class="shell">sudo rm -r /var/log/mongodb
+sudo rm -r /var/lib/mongo
+</code></pre>
+<h4 id="1-3-mongo的简单语法"><a href="#1-3-mongo的简单语法" class="headerlink" title="1.3.mongo的简单语法"></a>1.3.mongo的简单语法</h4><p>删除集合</p>
+<pre><code class="js">db.getCollection(&quot;pos&quot;).drop();
+</code></pre>
+<p>创建集合</p>
+<pre><code class="js">db.createCollection(&quot;pos&quot;);
+</code></pre>
+<p>创建索引</p>
+<pre><code class="js">db.getCollection(&quot;pos&quot;).createIndex({
+    hash: NumberInt(&quot;1&quot;)
+}, {
+    name: &quot;hash&quot;
+});
+db.getCollection(&quot;pos&quot;).createIndex({
+    &quot;sales_date&quot;: NumberInt(&quot;1&quot;)
+}, {
+    name: &quot;sales_date&quot;
+});
+</code></pre>
+<h4 id="1-4-备份与还原"><a href="#1-4-备份与还原" class="headerlink" title="1.4.备份与还原"></a>1.4.备份与还原</h4><p>参考<a href="https://www.jianshu.com/p/26b504c0f26e" target="_blank" rel="noopener">文章</a><br>备份一个集合：<br>语法：</p>
+<pre><code class="shell">mongodump --db database --collection collectionName
+</code></pre>
+<p>示例：</p>
+<pre><code class="shell">mongodump --collection pos --db saas
+</code></pre>
+<p>有指向性的备份，在A机器上备份还原B机器上的数据也是可行的</p>
+<pre><code class="shell">mongodump --host 127.0.0.1 --port 27071 --collection pos --db saas_dq_uat
+</code></pre>
+<p><img src="https://cdn.jsdelivr.net/gh/hfxjd9527/blog_img@main/mongo_restore2.png" alt="images"></p>
+<p>备份除集合1、集合2之外的所有集合</p>
+<pre><code class="shell">mongodump --db database --excludeCollection=collection1  --excludeCollection=collection2 
+</code></pre>
+<p>还原一个集合</p>
+<pre><code class="shell">mongorestore --collection collection --db database filePath
+mongorestore --collection pos --db saas /root/mongobackup/dump/saas/pos.bson
+</code></pre>
+<p>在148机器上还原数据到147机器</p>
+<pre><code class="shell">mongorestore --host 192.168.2.147 --port 27071 --collection pos --db saas_dq_uat /data/backup/dq_mongodb/mongo_dq_pos_bak191023/pos.bson
+</code></pre>
+<p>备份满足一定条件的数据，<a href="https://blog.csdn.net/mituan1234567/article/details/48056461" target="_blank" rel="noopener">参考文章</a></p>
 
         </div>
         <!-- .entry-content -->
@@ -391,36 +450,19 @@
       <div class="toc" style="background: none;"></div>
       <section class="post-squares nextprev">
         
-          
-            <div class="post-nepre half previous">
-          
-            <a href="/2020/12/28/2.Gitlab_CICD简介/" rel="prev">
-              <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/hfxjd9527/blog-assets@1.08/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/hfxjd9527/blog-assets@1.08/img/other/wallhaven-672007-1-1024x576.png" style="width: 100%;height: 100%;object-fit: cover;pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/hfxjd9527/blog-assets@1.08/img/other/wallhaven-672007-1-1024x576.png">
-              </div>
-              <span class="label">
-              Previous Post</span>
-              <div class="info">
-                <h3>
-                02-GitLab CI/CD功能简介</h3>
-                <hr>
-              </div>
-            </a>
-          </div>
-        
         
           
-            <div class="post-nepre half next">
+            <div class="post-nepre full next">
           
-            <a href="/2020/07/20/python向Excel中插入一列内容/" rel="next">
+            <a href="/2021/03/28/k8s多集群管理工具kubectl+kubecm+kubectx/" rel="next">
               <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/hfxjd9527/blog-assets@1.08/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/hfxjd9527/blog_img@master/zxc.jpg" style="width: 100%;height: 100%;object-fit: cover;pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/hfxjd9527/blog_img@master/zxc.jpg">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/hfxjd9527/blog-assets@1.08/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/hfxjd9527/blog_img@main/k8s.png" style="width: 100%;height: 100%;object-fit: cover;pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/hfxjd9527/blog_img@main/k8s.png">
               </div>
               <span class="label">
               Next Post</span>
               <div class="info">
                 <h3>
-                python向Excel中插入一列内容</h3>
+                k8s多集群管理工具kubectl+kubecm+kubectx</h3>
                 <hr>
               </div>
             </a>

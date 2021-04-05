@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">01-为什么要做CI/CD？ | StarryMusic</title>
+  <title itemprop="name">pg数据库恢复 | StarryMusic</title>
   
     <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -301,11 +301,11 @@
 
   <div class="pattern-center single-center">
     <!-- 有配图默认渲染第一张 -->
-    <div class="pattern-attachment-img lazyload" style="background-image: url(https://cdn.jsdelivr.net/gh/hfxjd9527/blog_img@main/02_3.png);" src="https://cdn.jsdelivr.net/gh/hfxjd9527/blog-assets@1.08/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/hfxjd9527/blog_img@main/02_3.png">
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://cdn.jsdelivr.net/gh/hfxjd9527/blog_img@main/postgresql.png);" src="https://cdn.jsdelivr.net/gh/hfxjd9527/blog-assets@1.08/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/hfxjd9527/blog_img@main/postgresql.png">
     </div>
     <header class="pattern-header single-header">
       <h1 class="entry-title">
-      01-为什么要做CI/CD？</h1>
+      pg数据库恢复</h1>
       <p class="entry-census">
         <span>
           <a href="https://starrymusic.xyz/about/">
@@ -317,7 +317,7 @@
         </span>
         <span class="bull">
         ·</span>
-        2020-12-4<span class="bull">
+        2021-3-14<span class="bull">
         ·</span>
       <span id="busuanzi_value_page_pv"></span>次阅读</p>
     </header>
@@ -331,38 +331,132 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h2 id="背景-传统的应用开发发布模式"><a href="#背景-传统的应用开发发布模式" class="headerlink" title="背景-传统的应用开发发布模式"></a>背景-传统的应用开发发布模式</h2><p><strong>开发团队</strong> 在开发环境中完成软件开发，单元测试，测试通过，提交到代码版本管理库。</p>
-<p><strong>运维团队</strong> 把应用部署到测试环境，供QA团队测试，测试通过后部署生产环境。</p>
-<p><strong>QA 团队</strong> 进行测试，测试通过后通知部署人员发布到生产环境。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/hfxjd9527/blog_img@main/01_1.png" alt="images"></p>
-<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p><strong>错误发现不及时</strong>  很多 错误在项目的早期可能就存在，到最后集成的时候才发现问题。</p>
-<p><strong>人工低级错误发生</strong> 产品和服务交付中的关键活动全都需要手动操作。</p>
-<p><strong>团队工作效率低</strong> 需要等待他人的工作完成后才能进行自己的工作。</p>
-<p><strong>开发运维对立 </strong>  开发人员想要快速更新，运维人员追求稳定，各自的针对的方向不同。</p>
-<p>经过上述问题我们需要作出改变，如何改变？</p>
-<hr>
-<h2 id="持续集成与持续交付"><a href="#持续集成与持续交付" class="headerlink" title="持续集成与持续交付"></a>持续集成与持续交付</h2><p>软件开发的连续方法基于自动执行脚本，以最大程度地减少在开发应用程序时引入错误的机会。从开发新代码到部署新代码，他们几乎不需要人工干预，甚至根本不需要干预。</p>
-<p>它涉及到在每次小的迭代中就不断地构建，测试和部署代码更改，从而减少了基于错误或失败的先前版本开发新代码的机会。</p>
-<p>此方法有三种主要方法，每种方法都将根据最适合您的策略的方式进行应用。</p>
-<h3 id="持续集成-（CI）"><a href="#持续集成-（CI）" class="headerlink" title="持续集成 （CI）"></a>持续集成 （CI）</h3><p>持续合并开发人员正在开发编写的所有代码的一种做法。通常一天内进行多次合并和提交代码，从存储库或生产环境中进行构建和自动化测试，以确保没有集成问题并及早发现任何问题。</p>
-<p><strong>开发人员提交代码的时候一般先在本地测试验证，只要开发人员提交代码到版本控制系统就会触发一条提交流水线，对本次提交进行验证。</strong></p>
-<h3 id="持续交付-（CD）"><a href="#持续交付-（CD）" class="headerlink" title="持续交付 （CD）"></a>持续交付 （CD）</h3><p><a href="https://continuousdelivery.com/" target="_blank" rel="noopener">持续交付</a>是超越持续集成的一步。不仅会在推送到代码库的每次代码更改时都进行构建和测试，而且，作为附加步骤，即使部署是手动触发的，它也可以连续部署。此方法可确保自动检查代码，但需要人工干预才能从策略上手动触发更改的部署。</p>
-<h3 id="持续部署-CD"><a href="#持续部署-CD" class="headerlink" title="持续部署   (CD)"></a>持续部署   (CD)</h3><p>通常可以通过将更改自动推送到发布系统来随时将软件发布到生产环境中。持续部署 会更进一步，并自动将更改推送到生产中。类似于持续交付，<a href="https://www.airpair.com/continuous-deployment/posts/continuous-deployment-for-practical-people" target="_blank" rel="noopener">持续部署</a>也是超越持续集成的又一步。不同之处在于，您无需将其手动部署，而是将其设置为自动部署。部署您的应用程序完全不需要人工干预。</p>
-<hr>
-<h2 id="CICD的价值体现"><a href="#CICD的价值体现" class="headerlink" title="CICD的价值体现"></a>CICD的价值体现</h2><ul>
-<li>尽早反馈，尽早发现错误。</li>
-<li>减少集成问题，每次发现问题当时解决，避免问题堆积。</li>
-<li>每次更改都能成功发布，降低发布风险。</li>
-<li>更加频繁的交付价值，客户反馈。</li>
-</ul>
-<hr>
-<h2 id="推荐常用的CI-CD工具"><a href="#推荐常用的CI-CD工具" class="headerlink" title="推荐常用的CI/CD工具"></a>推荐常用的CI/CD工具</h2><h3 id="Jenkins"><a href="#Jenkins" class="headerlink" title="Jenkins"></a>Jenkins</h3><p>专业的CI工具，可扩展自动化服务器、安装配置简单、丰富的插件库、分布式架构设计、支持所有的平台、可视化的管理页面。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/hfxjd9527/blog_img@main/01_3.png" alt="images"></p>
-<h3 id="GitLab"><a href="#GitLab" class="headerlink" title="GitLab"></a>GitLab</h3><p>端到端DevOps工具，常用功能：代码审查、问题跟踪、动态订阅、易于扩展、项目wiki、多角色项目管理、项目代码在线编译预览、CI工具集成。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/hfxjd9527/blog_img@main/01_2.png" alt="images"></p>
-<p>提交合并代码集成 ：通过git push 进行操作或者在GitLab Web页面操作。</p>
-<p>发布应用到服务器 ： 获取制品库中的应用，然后用salt、ansible发布部署到服务器。</p>
-<p>完全自动化： 提交代码-&gt; 构建部署 -&gt; 发布</p>
+          <p>问题描述：<br>DQ想要下载2018年的raps报表数据，但是数据库中没有完整版的数据，最早是2018年12月份的数据，之前devops有物理备份过pg数据库，所以现在有个需求就是将这部分数据恢复出来<br>问题解决：<br>整库备份它长这个样子：<br><img src="https://cdn.jsdelivr.net/gh/hfxjd9527/blog_img@main/pg_restore1.png" alt="images"> </p>
+<h2 id="1-知道这是物理备份，先在虚拟机上实操一下"><a href="#1-知道这是物理备份，先在虚拟机上实操一下" class="headerlink" title="1.知道这是物理备份，先在虚拟机上实操一下"></a>1.知道这是物理备份，先在虚拟机上实操一下</h2><h4 id="1-1-安装相同版本的pg"><a href="#1-1-安装相同版本的pg" class="headerlink" title="1.1.安装相同版本的pg"></a>1.1.安装相同版本的pg</h4><p>安装PostgreSQL9.6<br>将新的PostgreSQL 9.6存储库添加到系统中</p>
+<pre><code class="shell">yum -y install https://download.postgresql.org/pub/repos/yum/9.6/redhat/rhel-7.4-x86_64/pgdg-redhat-repo-latest.noarch.rpm
+</code></pre>
+<p>现在使用下面的yum命令安装PostgreSQL 9.6</p>
+<pre><code class="shell">yum -y install postgresql96-server postgresql96-contrib
+</code></pre>
+<p>启动并配置PostgreSQL 9.6<br>在开始postgres服务之前，我们需要初始化数据库。</p>
+<pre><code class="shell">cd /usr/pgsql-9.6/bin
+./postgresql96-setup initdb
+</code></pre>
+<p>接下来，启动postgres服务，并启用它在系统启动时自动启动。</p>
+<pre><code class="shell">systemctl start postgresql-9.6
+systemctl enable postgresql-9.6
+</code></pre>
+<p>默认情况下，postgres在端口5432上运行。所以通过执行netstat命令来确保端口5432的状态是’ LISTEN ‘</p>
+<pre><code class="shell">netstat -plntu
+</code></pre>
+<p>如果您没有netstat命令，请安装net-tools。 这是网络工具的一部分</p>
+<pre><code class="shell">yum -y install net-tools
+</code></pre>
+<p>所以PostgreSQL 9.6已经启动了。 但是我们仍然需要为postgres用户配置密码。 以“postgres”用户身份登录，然后访问postgres的“psql”shell。</p>
+<pre><code class="shell">su - postgres
+psql
+</code></pre>
+<p>用下面的查询给’ postgres ‘用户设置新密码：juoperbhju90habfj#hg</p>
+<pre><code class="shell">\password postgres
+Enter new password:
+</code></pre>
+<p><img src="https://cdn.jsdelivr.net/gh/hfxjd9527/blog_img@main/pg_restore2.png" alt="images"><br>所以PostgreSQL 9.6已经启动了，并为postgres用户配置了一个新的密码。<br>安装好后，使用navicat连接试一下，能连接上就OK了</p>
+<h4 id="1-2-挪动pg数据库默认的存放数据的文件夹到-data目录下"><a href="#1-2-挪动pg数据库默认的存放数据的文件夹到-data目录下" class="headerlink" title="1.2.挪动pg数据库默认的存放数据的文件夹到/data目录下"></a>1.2.挪动pg数据库默认的存放数据的文件夹到/data目录下</h4><p>这一步的操作原因是只有data目录下才有比较大的空间供我解压一个近200G的压缩文件<br><img src="https://cdn.jsdelivr.net/gh/hfxjd9527/blog_img@main/pg_restore3.png" alt="images"><br>在换路径前先关掉pg数据库</p>
+<pre><code class="shell">systemctl stop postgresql-9.6.service
+</code></pre>
+<p>然后复制pg数据库默认的存放数据的文件夹到/data目录下</p>
+<pre><code class="shell">sudo cp -rf /var/lib/pgsql/9.6/data /data/pgsql/
+</code></pre>
+<p>挪动后，设置用户和权限</p>
+<pre><code class="shell">cd /data/
+sudo chown -R postgres:postgres pgsql/
+sudo chmod 700 pgsql/
+</code></pre>
+<p>修改pg数据库的service文件</p>
+<pre><code class="shell">vim /usr/lib/systemd/system/postgresql-9.6.service
+</code></pre>
+<p>将默认加载文件指向自己想要的路径</p>
+<pre><code class="shell">Environment=PGDATA=/data/pgsql/
+</code></pre>
+<p>修改PGDATA路径之后，就可以执行下面的命令让其立即生效</p>
+<pre><code class="shell">sudo systemctl daemon-reload
+systemctl restart postgresql-9.6.service
+</code></pre>
+<p>如果不报错，万事大吉，如果报错，查看报错内容，解决报错问题<br>如果报错内容说是找不到文件夹或者什么empty，那就是上面赋予权限问题没有做好，挪动一下，重新赋予权限即可<br>查看是否属于某个用户或者用户组，下面这种是对的<br><img src="https://cdn.jsdelivr.net/gh/hfxjd9527/blog_img@main/pg_restore4.png" alt="images"> </p>
+<h2 id="2-实际恢复数据"><a href="#2-实际恢复数据" class="headerlink" title="2.实际恢复数据"></a>2.实际恢复数据</h2><p>具体操作<br>为了避免解压不完全，使用一个工具screen，因为毕竟近200G的压缩文件，解压后有近700G的文件，在解压时，不让其中断。</p>
+<pre><code class="shell">yum -y install screen
+</code></pre>
+<p>创建一个会话</p>
+<pre><code class="shell">screen -S 会话名称
+</code></pre>
+<p>例如，我想在这个会话中执行解压的命令，我可以创建下面这个会话</p>
+<pre><code class="shell">screen -S tarzxdq
+</code></pre>
+<p>然后就是正常的在终端中的常规操作<br>进到某个文件夹下，执行解压命令，然后X掉这个终端，该干嘛干嘛</p>
+<pre><code class="shell">tar -zxvf full.tar.gz
+</code></pre>
+<p>查看会话列表：</p>
+<pre><code class="shell">screen -ls
+</code></pre>
+<p>进入到某个会话</p>
+<pre><code class="shell">screen -r 会话名称
+screen -r tarzxdq
+</code></pre>
+<p>有时在恢复 screen 时会出现 There is no screen to be resumed matching <em>**</em>，<br>遇到这种情况，先退出这个会话，然后再进入</p>
+<pre><code class="shell">screen -d tarzxdq
+screen -r tarzxdq
+</code></pre>
+<pre><code class="shell">cd /data
+</code></pre>
+<p>将解压好的full文件夹复制到/data目录下，其实在原来目录应该也可以，只是尝试过失败很多次，有阴影了</p>
+<pre><code class="shell">mv restore_for_dq/full .
+</code></pre>
+<p>给文件夹赋予权限</p>
+<pre><code class="shell">sudo chown -R postgres:postgres full/
+sudo chmod 700 full/
+</code></pre>
+<p>拿到full文件夹路径</p>
+<pre><code class="shell">cd full/
+pwd
+</code></pre>
+<p>修改service中PGDATA路径</p>
+<pre><code class="shell">vim /usr/lib/systemd/system/postgresql-9.6.service
+</code></pre>
+<p>生效变更</p>
+<pre><code class="shell">systemctl daemon-reload
+</code></pre>
+<p>重启数据库</p>
+<pre><code class="shell">systemctl restart postgresql-9.6.service
+</code></pre>
+<p>报错了：<br>查看报错信息</p>
+<pre><code class="shell">journalctl -xe
+</code></pre>
+<p><img src="https://cdn.jsdelivr.net/gh/hfxjd9527/blog_img@main/pg_restore5.png" alt="images"> </p>
+<p>将postgresql.conf先复制一份</p>
+<pre><code class="shell">cp postgresql.conf postgresql.conf.bak
+</code></pre>
+<p>再根据报错信息，将报错中提到的这个搜一下，全部注释掉，然后将logging_collector由on改成off<br><img src="https://cdn.jsdelivr.net/gh/hfxjd9527/blog_img@main/pg_restore6.png" alt="images"> </p>
+<p>重启一下，继续报错</p>
+<pre><code class="shell">systemctl restart postgresql-9.6.service
+journalctl -xe
+</code></pre>
+<p>再次修改</p>
+<pre><code class="shell">vim postgresql.conf
+</code></pre>
+<p>将报错中的内容注释掉，再次重启</p>
+<pre><code class="shell">systemctl restart postgresql-9.6.service
+ls
+</code></pre>
+<p>成功了，但是不支持postgres连接，将连接用户名改成root<br>然后将其改成信任所有连接，这样任何密码都能连上来</p>
+<pre><code class="shell">vim pg_hba.conf
+将上面这行注释，下面新加一行改成信任
+#host    all             all             127.0.0.1/32            ident
+host    all             all             127.0.0.1/32            trust
+</code></pre>
+<p>再次重启</p>
+<pre><code class="shell">systemctl restart postgresql-9.6.service
+</code></pre>
+<p>然后就可以连上来了<br><img src="https://cdn.jsdelivr.net/gh/hfxjd9527/blog_img@main/pg_restore7.png" alt="images"> </p>
 
         </div>
         <!-- .entry-content -->
@@ -394,15 +488,15 @@
           
             <div class="post-nepre half previous">
           
-            <a href="/2020/12/28/2.Gitlab_CICD简介/" rel="prev">
+            <a href="/2021/03/21/在k8s集群部署Jenkins服务/" rel="prev">
               <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/hfxjd9527/blog-assets@1.08/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/hfxjd9527/blog-assets@1.08/img/other/wallhaven-672007-1-1024x576.png" style="width: 100%;height: 100%;object-fit: cover;pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/hfxjd9527/blog-assets@1.08/img/other/wallhaven-672007-1-1024x576.png">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/hfxjd9527/blog-assets@1.08/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/hfxjd9527/blog_img@main/jenkins.png" style="width: 100%;height: 100%;object-fit: cover;pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/hfxjd9527/blog_img@main/jenkins.png">
               </div>
               <span class="label">
               Previous Post</span>
               <div class="info">
                 <h3>
-                02-GitLab CI/CD功能简介</h3>
+                在k8s集群部署Jenkins服务</h3>
                 <hr>
               </div>
             </a>
@@ -412,15 +506,15 @@
           
             <div class="post-nepre half next">
           
-            <a href="/2020/07/20/python向Excel中插入一列内容/" rel="next">
+            <a href="/2021/03/13/mongo数据库备份与还原/" rel="next">
               <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/hfxjd9527/blog-assets@1.08/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/hfxjd9527/blog_img@master/zxc.jpg" style="width: 100%;height: 100%;object-fit: cover;pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/hfxjd9527/blog_img@master/zxc.jpg">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/hfxjd9527/blog-assets@1.08/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/hfxjd9527/blog_img@main/mongodb.png" style="width: 100%;height: 100%;object-fit: cover;pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/hfxjd9527/blog_img@main/mongodb.png">
               </div>
               <span class="label">
               Next Post</span>
               <div class="info">
                 <h3>
-                python向Excel中插入一列内容</h3>
+                mongo数据库备份与还原</h3>
                 <hr>
               </div>
             </a>
