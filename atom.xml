@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>StarryMusic</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="/"/>
+  <updated>2024-01-11T10:39:04.562Z</updated>
+  <id>/</id>
+  
+  <author>
+    <name>liruochen</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>02-GitLab CI/CD功能简介</title>
+    <link href="/2024/01/11/2.Gitlab_CICD%E7%AE%80%E4%BB%8B/"/>
+    <id>/2024/01/11/2.Gitlab_CICD简介/</id>
+    <published>2024-01-11T10:39:04.561Z</published>
+    <updated>2024-01-11T10:39:04.562Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="02-GitLab-CI-CD功能简介"><a href="#02-GitLab-CI-CD功能简介" class="headerlink" title="02-GitLab CI/CD功能简介"></a>02-GitLab CI/CD功能简介</h1><h2 id="GitLab-内置持续集成功能"><a href="#GitLab-内置持续集成功能" class="headerlink" title="GitLab 内置持续集成功能"></a>GitLab 内置持续集成功能</h2><h3 id="持续集成-（CI）"><a href="#持续集成-（CI）" class="headerlink" title="持续集成 （CI）"></a>持续集成 （CI）</h3><ul><li>集成团队中每个开发人员提交的代码到代码存储库中。</li><li>开发人员在Merge或者Pull请求中合并拉取新代码。</li><li>在提交或者合并更改到代码存储库之前，会触发了构建，测试和新代码验证的管道。</li><li>CI可帮助您在开发周期的早期发现并减少错误</li></ul><h3 id="连续交付-（CD）"><a href="#连续交付-（CD）" class="headerlink" title="连续交付 （CD）"></a>连续交付 （CD）</h3><ul><li>可通过结构化的部署管道确保将经过CI验证的代码交付给您的应用程序。</li><li>CD可以将经过验证的代码更快地移至您的应用程序。</li></ul><p>CI/CD 一起 可以加快团队为客户和利益相关者交付成果的速度。CI和CD必须无缝协作，以使您的团队快速有效地进行构建，并且对于确保完全优化的开发实践至关重要。</p><p><img src="/images/blog_img/02_2.png" alt="images"></p><hr><h2 id="GitLab-CI-CD优势"><a href="#GitLab-CI-CD优势" class="headerlink" title="GitLab CI/CD优势"></a>GitLab CI/CD优势</h2><ul><li>开源： CI/CD是开源GitLab社区版和专有GitLab企业版的一部分。</li><li>易于学习： 具有详细的入门文档。</li><li>无缝集成： GitLab CI / CD是GitLab的一部分，支持从计划到部署,具有出色的用户体验。</li><li>可扩展： 测试可以在单独的计算机上分布式运行，可以根据需要添加任意数量的计算机。</li><li>更快的结果： 每个构建可以拆分为多个作业，这些作业可以在多台计算机上并行运行。</li><li>针对交付进行了优化： 多个阶段，手动部署， 环境 和 变量。</li></ul><p><img src="/images/blog_img/02_3.png" alt="imags"></p><hr><h2 id="GitLab-CI-CD特点"><a href="#GitLab-CI-CD特点" class="headerlink" title="GitLab CI/CD特点"></a>GitLab CI/CD特点</h2><ul><li>多平台： Unix，Windows，macOS和任何其他支持Go的平台上执行构建。</li><li>多语言： 构建脚本是命令行驱动的，并且可以与Java，PHP，Ruby，C和任何其他语言一起使用。</li><li>稳定构建： 构建在与GitLab不同的机器上运行。</li><li>并行构建： GitLab CI / CD在多台机器上拆分构建，以实现快速执行。</li><li>实时日志记录： 合并请求中的链接将您带到动态更新的当前构建日志。</li><li>灵活的管道： 您可以在每个阶段定义多个并行作业，并且可以 触发其他构建。</li><li>版本管道： 一个 .gitlab-ci.yml文件 包含您的测试，整个过程的步骤，使每个人都能贡献更改，并确保每个分支获得所需的管道。</li><li>自动缩放： 您可以 自动缩放构建机器，以确保立即处理您的构建并将成本降至最低。</li><li>构建工件： 您可以将二进制文件和其他构建工件上载到 GitLab并浏览和下载它们。</li><li>Docker支持： 可以使用自定义Docker映像， 作为测试的一部分启动 服务， 构建新的Docker映像，甚至可以在Kubernetes上运行。</li><li>容器注册表： 内置的容器注册表， 用于存储，共享和使用容器映像。</li><li>受保护的变量： 在部署期间使用受每个环境保护的变量安全地存储和使用机密。</li><li>环境： 定义多个环境。</li></ul><p><img src="/images/blog_img/02_4.jpeg" alt="imags"></p><hr><h2 id="GitLab-CI-CD架构"><a href="#GitLab-CI-CD架构" class="headerlink" title="GitLab CI/CD架构"></a>GitLab CI/CD架构</h2><h3 id="GitLab-CI-CD"><a href="#GitLab-CI-CD" class="headerlink" title="GitLab CI / CD"></a>GitLab CI / CD</h3><p>GitLab的一部分，GitLab是一个Web应用程序，具有将其状态存储在数据库中的API。<br>除了GitLab的所有功能之外，它还管理项目/构建并提供一个不错的用户界面。</p><h3 id="GitLab-Runner"><a href="#GitLab-Runner" class="headerlink" title="GitLab Runner"></a>GitLab Runner</h3><p>是一个处理构建的应用程序。<br>它可以单独部署，并通过API与GitLab CI / CD一起使用。</p><p><img src="/images/blog_img/02_1.png" alt="images"></p><h3 id="gitlab-ci-yml"><a href="#gitlab-ci-yml" class="headerlink" title=".gitlab-ci.yml"></a>.gitlab-ci.yml</h3><p>定义流水线作业运行，位于应用项目根目录下 。</p><p><img src="/images/blog_img/02_5.png" alt="images"></p><p><strong>为了运行测试，至少需要一个 GitLab 实例、一个 GitLab Runner、一个gitlab-ci文件</strong></p><hr><h2 id="GitLab-CI-CD工作原理"><a href="#GitLab-CI-CD工作原理" class="headerlink" title="GitLab CI/CD工作原理"></a>GitLab CI/CD工作原理</h2><ul><li>将代码托管到Git存储库。</li><li>在项目根目录创建ci文件 <code>.gitlab-ci.yml</code> ，在文件中指定构建，测试和部署脚本。</li><li>GitLab将检测到它并使用名为GitLab Runner的工具运行脚本。</li><li>脚本被分组为<strong>作业</strong>，它们共同组成了一个<strong>管道</strong>。</li></ul><p><img src="/images/blog_img/02_6.png" alt="images"></p><p>管道状态也会由GitLab显示：</p><p><img src="/images/blog_img/02_7.png" alt="images"></p><p>最后，如果出现任何问题，可以轻松地 <a href="https://docs.gitlab.com/12.9/ee/ci/environments.html#retrying-and-rolling-back" target="_blank" rel="noopener">回滚</a>所有更改：</p><p><img src="/images/blog_img/02_8.png" alt="images"></p><hr>]]></content>
+    
+    <summary type="html">
+    
+      GitLab CI/CD功能简介
+    
+    </summary>
+    
+    
+      <category term="devops" scheme="/tec/devops/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>输出集群中使用了mysql或者pg的deployment</title>
+    <link href="/2021/04/20/%E8%BE%93%E5%87%BA%E9%9B%86%E7%BE%A4%E4%B8%AD%E4%BD%BF%E7%94%A8%E4%BA%86mysql%E6%88%96%E8%80%85pg%E7%9A%84deployment/"/>
+    <id>/2021/04/20/输出集群中使用了mysql或者pg的deployment/</id>
+    <published>2021-04-20T13:29:01.000Z</published>
+    <updated>2024-01-11T10:39:04.563Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="第一针对configmap中有配置相关数据库信息的服务"><a href="#第一针对configmap中有配置相关数据库信息的服务" class="headerlink" title="第一针对configmap中有配置相关数据库信息的服务"></a>第一针对configmap中有配置相关数据库信息的服务</h2><p>脚本中有用到jq工具</p><h4 id="输出当前环境下有配置configmap的deployment的名称"><a href="#输出当前环境下有配置configmap的deployment的名称" class="headerlink" title="输出当前环境下有配置configmap的deployment的名称"></a>输出当前环境下有配置configmap的deployment的名称</h4><pre><code class="shell">strconfig=&quot;config&quot;for line in `kubectl get deployment | awk &#39;{print $1}&#39;`do    name=`kubectl get deployment $line -ojson|jq .spec.template.spec.volumes | grep name`    #echo $line $name    result=$(echo $name | grep &quot;${strconfig}&quot;)        if [ -n &quot;$result&quot; ]; then        echo $line        fidone</code></pre><h4 id="输出当前集群命名空间下有配置configmap的deployment的configmap的名称"><a href="#输出当前集群命名空间下有配置configmap的deployment的configmap的名称" class="headerlink" title="输出当前集群命名空间下有配置configmap的deployment的configmap的名称"></a>输出当前集群命名空间下有配置configmap的deployment的configmap的名称</h4><pre><code class="shell">strconfig=&quot;config&quot;for line in `kubectl get deployment | awk &#39;{print $1}&#39;`do    name=`kubectl get deployment $line -ojson|jq .spec.template.spec.volumes | grep name`    result=$(echo $name | grep &quot;${strconfig}&quot;)        if [ -n &quot;$result&quot; ]; then        for configname in `echo $name | awk &#39;{print $2}&#39;| sed &#39;s/\&quot;//g&#39;`        do               echo ${configname%?}        done        fidone</code></pre><h4 id="输出带有pg或者mysql的configMapName"><a href="#输出带有pg或者mysql的configMapName" class="headerlink" title="输出带有pg或者mysql的configMapName"></a>输出带有pg或者mysql的configMapName</h4><pre><code class="shell">strconfig=&quot;config&quot;str=&quot;\-config&quot;for line in `kubectl get deployment | awk &#39;{print $1}&#39;`do    name=`kubectl get deployment $line -ojson|jq .spec.template.spec.volumes | grep name`    result=$(echo $name | grep &quot;${strconfig}&quot;)        if [ -n &quot;$result&quot; ]; then        for finalresult in `echo $name | awk &#39;{print $0}&#39;| sed &#39;s/\&quot;//g&#39;`        do            configname=$(echo $finalresult | grep &quot;${str}&quot;)                    if [ -n &quot;$configname&quot; ]; then               finalConfigName=`echo $configname | sed -e &#39;s/,//g&#39;`                   has_mysql=`kubectl get configmap $finalConfigName -o yaml | grep mysql`                   if [ -n &quot;$has_mysql&quot; ]; then                         echo &quot;has mysql&quot; $finalConfigName                   fi                   has_pg=`kubectl get configmap $finalConfigName -o yaml | grep pg`                   if [ -n &quot;$has_pg&quot; ]; then                             echo &quot;has pg&quot; $finalConfigName                       fi            fi        done        fidone</code></pre><h4 id="输出带有pg或者mysql的deployment"><a href="#输出带有pg或者mysql的deployment" class="headerlink" title="输出带有pg或者mysql的deployment"></a>输出带有pg或者mysql的deployment</h4><pre><code class="shell">strconfig=&quot;config&quot;str=&quot;\-config&quot;for line in `kubectl get deployment | awk &#39;{print $1}&#39;`do    name=`kubectl get deployment $line -ojson|jq .spec.template.spec.volumes | grep name`    result=$(echo $name | grep &quot;${strconfig}&quot;)        if [ -n &quot;$result&quot; ]; then        for finalresult in `echo $name | awk &#39;{print $0}&#39;| sed &#39;s/\&quot;//g&#39;`        do            configname=$(echo $finalresult | grep &quot;${str}&quot;)                    if [ -n &quot;$configname&quot; ]; then               finalConfigName=`echo $configname | sed -e &#39;s/,//g&#39;`                   has_mysql=`kubectl get configmap $finalConfigName -o yaml | grep mysql`                   if [ -n &quot;$has_mysql&quot; ]; then                         echo &quot;has mysql&quot; $line                   fi                   has_pg=`kubectl get configmap $finalConfigName -o yaml | grep pg`                   if [ -n &quot;$has_pg&quot; ]; then                             echo &quot;has pg&quot; $line                       fi            fi        done        fidone</code></pre><h2 id="第二针对环境变量中有配置相关数据库信息的服务"><a href="#第二针对环境变量中有配置相关数据库信息的服务" class="headerlink" title="第二针对环境变量中有配置相关数据库信息的服务"></a>第二针对环境变量中有配置相关数据库信息的服务</h2><p>这个比较简单，直接查看deployment的yaml文件即可</p><pre><code class="shell">kubectl get deploy deployment_name -o yaml | grep mysql</code></pre><h2 id="综合后shell脚本如下"><a href="#综合后shell脚本如下" class="headerlink" title="综合后shell脚本如下"></a>综合后shell脚本如下</h2><pre><code class="shell">strconfig=&quot;config&quot;str=&quot;\-config&quot;function get_deployment_from_configmap(){for line in `kubectl get deployment | awk &#39;{if (NR&gt;1) print $1}&#39;`do    name=`kubectl get deployment $line -ojson|jq .spec.template.spec.volumes | grep name`    result=$(echo $name | grep &quot;${strconfig}&quot;)        if [ -n &quot;$result&quot; ]; then        for finalresult in `echo $name | awk &#39;{print $0}&#39;| sed &#39;s/\&quot;//g&#39;`        do            configname=$(echo $finalresult | grep &quot;${str}&quot;)                    if [ -n &quot;$configname&quot; ]; then               finalConfigName=`echo $configname | sed -e &#39;s/,//g&#39;`                   has_mysql=`kubectl get configmap $finalConfigName -o yaml | grep mysql`                   if [ -n &quot;$has_mysql&quot; ]; then                         echo &quot;该服务在configMap中引用了mysql&quot; $line                   fi                   has_pg=`kubectl get configmap $finalConfigName -o yaml | grep pg`                   if [ -n &quot;$has_pg&quot; ]; then                             echo &quot;该服务在configMap中引用了pg&quot; $line                       fi            fi        done        fidone}function get_deployment_from_env(){    str_mysql=&quot;mysql&quot;    str_pg=&quot;pg&quot;    for line in `kubectl get deployment | awk &#39;{if (NR&gt;1) print $1}&#39;`    do        name=`kubectl get deploy $line -o yaml | grep mysql`        mysql_result=$(echo $name | grep &quot;${str_mysql}&quot;)            if [ -n &quot;$mysql_result&quot; ]; then           echo &quot;该服务在环境变量中引用了mysql:&quot; $line        fi        pg_result=$(echo $name | grep &quot;${str_pg}&quot;)            if [ -n &quot;$pg_result&quot; ]; then               echo &quot;该服务在环境变量中引用了pg:&quot; $line            fi    done}function main(){     get_deployment_from_configmap     get_deployment_from_env}main</code></pre><p>以上配合<a href="https://starrymusic.life/2021/03/28/k8s%E5%A4%9A%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7kubectl+kubecm+kubectx/" target="_blank" rel="noopener">集群管理工具</a>使用更佳哦！</p>]]></content>
+    
+    <summary type="html">
+    
+      shell脚本管理k8s集群
+    
+    </summary>
+    
+    
+      <category term="devops" scheme="/tec/devops/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>k8s多集群管理工具kubectl+kubecm+kubectx</title>
+    <link href="/2021/03/28/k8s%E5%A4%9A%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7kubectl+kubecm+kubectx/"/>
+    <id>/2021/03/28/k8s多集群管理工具kubectl+kubecm+kubectx/</id>
+    <published>2021-03-28T13:29:01.000Z</published>
+    <updated>2024-01-11T10:39:04.562Z</updated>
+    
+    <content type="html"><![CDATA[<p>kubectl<a href="https://kubernetes.io/zh/docs/tasks/tools/install-kubectl/" target="_blank" rel="noopener">安装与使用</a>  </p><h2 id="1-安装kubecm"><a href="#1-安装kubecm" class="headerlink" title="1.安装kubecm"></a>1.安装kubecm</h2><p>mac电脑安装方式：</p><pre><code class="shell">brew install sunny0826/tap/kubecm</code></pre><p>如果无法访问github或者访问较慢，需要科学上网</p><h2 id="2-使用kubecm"><a href="#2-使用kubecm" class="headerlink" title="2.使用kubecm"></a>2.使用kubecm</h2><h4 id="2-1-初次使用"><a href="#2-1-初次使用" class="headerlink" title="2.1.初次使用"></a>2.1.初次使用</h4><p>安装完成后，新建个文件夹，随便命名，比方叫做hexk8s，将rancher上kubeconfig文件复制下来放到该文件夹下，根据不同项目，给config文件起个名字。<br><img src="/images/blog_img/cfg.png" alt="images"><br>然后执行命令（回到hexk8s上级目录）</p><pre><code class="shell">kubecm merge -f hexk8s </code></pre><p>选择true，让其overwite ~/.kube/config文件</p><h4 id="2-2-添加项目config文件"><a href="#2-2-添加项目config文件" class="headerlink" title="2.2.添加项目config文件"></a>2.2.添加项目config文件</h4><p>如果下次有新的项目config需要加进来，在该文件夹下，新建一个项目名-config文件，比如xiaomian-config</p><pre><code class="shell">kubecm add -f xiaomian-config</code></pre><p>选择true让其overwrite</p><h4 id="2-3-删除某个项目"><a href="#2-3-删除某个项目" class="headerlink" title="2.3.删除某个项目"></a>2.3.删除某个项目</h4><pre><code class="shell">kubecm delete</code></pre><p>按上下方向键选出自己要删的，回车，然后true，就可以删除了</p><p>####2.4.选择自己要看的项目</p><pre><code class="shell">kubecm switch</code></pre><p>如果项目较多，可以像使用vim编辑文件一样，使用/查找，选中后，回车即可进到该项目，进到里面后，结下来的操作，就是kubectl之前的操作了</p><h2 id="3-安装kubectx"><a href="#3-安装kubectx" class="headerlink" title="3.安装kubectx"></a>3.安装kubectx</h2><p>上面虽然可以切换项目，但是不能锁定namespace，查看pod还要带上-n namespace_name还是不够便捷<br>先安装fzf模糊搜索，不分开讲它的使用，具体可参考：<a href="https://github.com/junegunn/fzf" target="_blank" rel="noopener">fzf</a></p><pre><code class="shell">brew install fzf</code></pre><p>kubectx的功能其实相当于kubecm switch，主要实现项目的切换</p><pre><code class="shell">brew install kubectx</code></pre><p>安装后，直接在终端输入kubectx，就可以选择自己要进去的项目，前提是有过上面那种配置<br>kubens命令可以看到当前环境所有的namespace，可以快速选择NS，选择NS之后执行的命令就是在当前NS中执行了，比如执行kubectl get pods 显示的就是当前NS所有的pod，不需要加上-n xxxx</p>]]></content>
+    
+    <summary type="html">
+    
+      k8s多集群管理工具
+    
+    </summary>
+    
+    
+      <category term="devops" scheme="/tec/devops/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>在k8s集群部署Jenkins服务</title>
+    <link href="/2021/03/21/%E5%9C%A8k8s%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2Jenkins%E6%9C%8D%E5%8A%A1/"/>
+    <id>/2021/03/21/在k8s集群部署Jenkins服务/</id>
+    <published>2021-03-21T12:29:01.000Z</published>
+    <updated>2024-01-11T10:39:04.563Z</updated>
+    
+    <content type="html"><![CDATA[<p>第一次部署jenkins服务时，镜像中缺少一些Jenkins服务需要的依赖环境，在使用过程中有很多问题，后来选用其他镜像，并为其配置好相关环境后，打包成一个新的镜像，最后在rancher上替换掉当前镜像地址。下面会贴出整个服务的配置文件，是可移植的。以下操作分别是在Mac、Mac的虚拟机和容器之间切换操作。</p><h2 id="具体操作"><a href="#具体操作" class="headerlink" title="具体操作"></a>具体操作</h2><pre><code class="shell"># 在虚拟机上的操作# 使用一个相对稳定的镜像docker pull jenkinsci/blueocean# 查看pull的结果docker images | grep jenkins# 启动Jenkinsdocker run -d  --name jenkins -u root -p 9090:8080  -v /var/jenkins_home:/var/jenkins_home  jenkinsci/blueocean# 查看Jenkins容器docker ps | grep jenkins# 进到容器里面docker exec -it 0f5832ffb8a0 bash# 下面是在容器中的操作# 查看apk命令帮助apk -h# 安装一些常用的工具# 安装mavenapk add maven# 查看maven相关信息apk info -L maven# 查看git信息apk info -L git# 查看是否有Java环境echo $JAVA_HOME# 安装一些常用的工具apk add gccapk add yumapk add wget# 安装allurecd /usr/local/mkdir srccd src/# 容器内操作结束# 在Mac电脑上下载allure-2.13.8.tgz# 下载链接：https://github.com/allure-framework/allure2/releases# 下载后，使用scp命令将其拷贝到虚拟机scp allure-2.13.8.tgz root@172.16.26.101:/root# 然后再从虚拟机拷贝到容器内部docker cp allure-2.13.8.tgz 0f5832ffb8a0:/usr/local/src/allure-2.13.8.tgz# 进到容器内继续操作docker exec -it 0f5832ffb8a0 bashcd /usr/local/src# 解压tar -zxvf allure-2.13.8.tgzmv allure-2.13.8 allure# 创建软连接ln -s /usr/local/src/allure/bin/allure /usr/bin/allure# 验证allureallure --version# 退出容器# 在虚拟机上将当前正在运行的容器打包成镜像，推送到自己docker-hub上docker commit -a &quot;hex&quot; -m &quot;hex-jenkins&quot; 0f5832ffb8a0 jenkins:0318docker imagesdocker tag jenkins:0318 131412127/jenkins:0318docker logindocker push 131412127/jenkins:0318# 推送到公司镜像仓库docker tag jenkins:0318 registry.XXXXXXX.cn/jenkins:0318docker login registry.XXXXXXX.cndocker push registry.XXXXXXX.cn/jenkins:0318# 到rancher上替换成这个镜像 # 如果想要看自己虚拟机上运行的这个Jenkins# 在容器内查看Jenkins登录密码cat /var/jenkins_home/secrets/initialAdminPassword# 有密码后，就可以在浏览器中访问：http://172.16.26.101:9090/</code></pre><h2 id="相关配置文件"><a href="#相关配置文件" class="headerlink" title="相关配置文件"></a>相关配置文件</h2><p>以下是在k8s集群中搭建jenkins服务用到的相关配置文件</p><h4 id="jenkins-service-account-yaml"><a href="#jenkins-service-account-yaml" class="headerlink" title="jenkins-service-account.yaml"></a>jenkins-service-account.yaml</h4><pre><code class="yaml">---apiVersion: v1kind: ServiceAccountmetadata:  name: jenkins---kind: RoleapiVersion: rbac.authorization.k8s.io/v1beta1metadata:  name: jenkinsrules:- apiGroups: [&quot;&quot;]  resources: [&quot;pods&quot;]  verbs: [&quot;create&quot;,&quot;delete&quot;,&quot;get&quot;,&quot;list&quot;,&quot;patch&quot;,&quot;update&quot;,&quot;watch&quot;]- apiGroups: [&quot;&quot;]  resources: [&quot;pods/exec&quot;]  verbs: [&quot;create&quot;,&quot;delete&quot;,&quot;get&quot;,&quot;list&quot;,&quot;patch&quot;,&quot;update&quot;,&quot;watch&quot;]- apiGroups: [&quot;&quot;]  resources: [&quot;pods/log&quot;]  verbs: [&quot;get&quot;,&quot;list&quot;,&quot;watch&quot;]- apiGroups: [&quot;&quot;]  resources: [&quot;secrets&quot;]  verbs: [&quot;get&quot;]  ---apiVersion: rbac.authorization.k8s.io/v1beta1kind: RoleBindingmetadata:  name: jenkinsroleRef:  apiGroup: rbac.authorization.k8s.io  kind: Role  name: jenkinssubjects:- kind: ServiceAccount  name: jenkins</code></pre><h4 id="jenkins-statefulset-yaml"><a href="#jenkins-statefulset-yaml" class="headerlink" title="jenkins-statefulset.yaml"></a>jenkins-statefulset.yaml</h4><pre><code class="yaml">apiVersion: apps/v1kind: StatefulSetmetadata:  labels:    name: jenkins  name: jenkins  namespace: qaspec:  podManagementPolicy: OrderedReady  replicas: 1  revisionHistoryLimit: 10  selector:    matchLabels:      name: jenkins  serviceName: jenkins  template:    metadata:      labels:        name: jenkins      name: jenkins    spec:      affinity:        nodeAffinity:          requiredDuringSchedulingIgnoredDuringExecution:            nodeSelectorTerms:            - matchExpressions:              - key: jenkins                operator: In                values:                - &quot;true&quot;      containers:      - command:        - /sbin/tini        - /usr/local/bin/jenkins.sh        - --prefix=/jenkins        env:        - name: ALLURE_HOME          value: /var/jenkins_home/allure/package/        - name: JAVA_OPTS          value: -Xmx512m -XshowSettings:vm -Dhudson.slaves.NodeProvisioner.initialDelay=0            -Dhudson.slaves.NodeProvisioner.MARGIN=50 -Dhudson.slaves.NodeProvisioner.MARGIN0=0.85            -D--prefix=/jenkins -Duser.timezone=Asia/Shanghai -Dhudson.security.csrf.GlobalCrumbIssuerConfiguration.DISABLE_CSRF_PROTECTION=true        - name: MAVEN_HOME          value: /var/jenkins_home/maven/        - name: PATH          value: /opt/java/openjdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/var/jenkins_home/maven/bin        - name: LIMITS_MEMORY          valueFrom:            resourceFieldRef:              divisor: &quot;0&quot;              resource: limits.memory        image: registry.hexcloud.cn/jenkins:0318        imagePullPolicy: Always        livenessProbe:          failureThreshold: 12          httpGet:            path: /jenkins/login            port: 8080            scheme: HTTP          initialDelaySeconds: 60          periodSeconds: 10          successThreshold: 1          timeoutSeconds: 5        name: jenkins        ports:        - containerPort: 8080          name: 8080tcp02          protocol: TCP        - containerPort: 50000          name: 50000tcp02          protocol: TCP        readinessProbe:          failureThreshold: 12          httpGet:            path: /jenkins/login            port: 8080            scheme: HTTP          initialDelaySeconds: 60          periodSeconds: 10          successThreshold: 1          timeoutSeconds: 5        resources:          requests:            cpu: 500m            memory: 500Mi        securityContext:          capabilities: {}        terminationMessagePath: /dev/termination-log        terminationMessagePolicy: File        volumeMounts:        - mountPath: /var/jenkins_home          name: jenkins-home      dnsPolicy: ClusterFirst      restartPolicy: Always      schedulerName: default-scheduler      securityContext:        fsGroup: 1000      serviceAccount: jenkins      serviceAccountName: jenkins      terminationGracePeriodSeconds: 10      volumes:      - hostPath:          path: /data/jenkins          type: &quot;&quot;        name: jenkins-home  updateStrategy:    type: RollingUpdate</code></pre><h4 id="jenkins-ingress-yaml"><a href="#jenkins-ingress-yaml" class="headerlink" title="jenkins-ingress.yaml"></a>jenkins-ingress.yaml</h4><pre><code class="yaml">apiVersion: extensions/v1beta1kind: Ingressmetadata:  name: jenkins  namespace: qaspec:  rules:  - host: jenkins.XXXXXXX.cn    http:      paths:      - backend:          serviceName: jenkins          servicePort: 80        path: /jenkins</code></pre><h4 id="jenkins-service-yaml"><a href="#jenkins-service-yaml" class="headerlink" title="jenkins-service.yaml"></a>jenkins-service.yaml</h4><pre><code class="yaml">apiVersion: v1kind: Servicemetadata:  name: jenkins  namespace: qaspec:  ports:  - name: http    port: 80    protocol: TCP    targetPort: 8080  - name: agent    port: 50000    protocol: TCP    targetPort: 50000  selector:    name: jenkins  sessionAffinity: None  type: ClusterIP</code></pre><h4 id="注意事项："><a href="#注意事项：" class="headerlink" title="注意事项："></a>注意事项：</h4><p>如果将上述文件部署在其他命名空间下，需要修改下上面文件的命名空间，修改下域名，给要部署的主机加上一个标签。<br>kubectl label nodes k8s-node01 jenkins=true<br>如在rancher上遇到：<br>Readiness probe failed: HTTP probe failed with statuscode: 503<br>原因可能是master节点的集群ip映射了5台机器，实际master只有3台，导致访问出错，解决方式，换一台主机，重新打标签。</p>]]></content>
+    
+    <summary type="html">
+    
+      在k8s集群部署Jenkins服务
+    
+    </summary>
+    
+    
+      <category term="devops" scheme="/tec/devops/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>pg数据库恢复</title>
+    <link href="/2021/03/14/pg%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D/"/>
+    <id>/2021/03/14/pg数据库恢复/</id>
+    <published>2021-03-14T13:00:01.000Z</published>
+    <updated>2024-01-11T10:39:04.562Z</updated>
+    
+    <content type="html"><![CDATA[<p>问题描述：<br>DQ想要下载2018年的raps报表数据，但是数据库中没有完整版的数据，最早是2018年12月份的数据，之前devops有物理备份过pg数据库，所以现在有个需求就是将这部分数据恢复出来<br>问题解决：<br>整库备份它长这个样子：<br><img src="/images/blog_img/pg_restore1.png" alt="images"> </p><h2 id="1-知道这是物理备份，先在虚拟机上实操一下"><a href="#1-知道这是物理备份，先在虚拟机上实操一下" class="headerlink" title="1.知道这是物理备份，先在虚拟机上实操一下"></a>1.知道这是物理备份，先在虚拟机上实操一下</h2><h4 id="1-1-安装相同版本的pg"><a href="#1-1-安装相同版本的pg" class="headerlink" title="1.1.安装相同版本的pg"></a>1.1.安装相同版本的pg</h4><p>安装PostgreSQL9.6<br>将新的PostgreSQL 9.6存储库添加到系统中</p><pre><code class="shell">yum -y install https://download.postgresql.org/pub/repos/yum/9.6/redhat/rhel-7.4-x86_64/pgdg-redhat-repo-latest.noarch.rpm</code></pre><p>现在使用下面的yum命令安装PostgreSQL 9.6</p><pre><code class="shell">yum -y install postgresql96-server postgresql96-contrib</code></pre><p>启动并配置PostgreSQL 9.6<br>在开始postgres服务之前，我们需要初始化数据库。</p><pre><code class="shell">cd /usr/pgsql-9.6/bin./postgresql96-setup initdb</code></pre><p>接下来，启动postgres服务，并启用它在系统启动时自动启动。</p><pre><code class="shell">systemctl start postgresql-9.6systemctl enable postgresql-9.6</code></pre><p>默认情况下，postgres在端口5432上运行。所以通过执行netstat命令来确保端口5432的状态是’ LISTEN ‘</p><pre><code class="shell">netstat -plntu</code></pre><p>如果您没有netstat命令，请安装net-tools。 这是网络工具的一部分</p><pre><code class="shell">yum -y install net-tools</code></pre><p>所以PostgreSQL 9.6已经启动了。 但是我们仍然需要为postgres用户配置密码。 以“postgres”用户身份登录，然后访问postgres的“psql”shell。</p><pre><code class="shell">su - postgrespsql</code></pre><p>用下面的查询给’ postgres ‘用户设置新密码：juoperbhju90habfj#hg</p><pre><code class="shell">\password postgresEnter new password:</code></pre><p><img src="/images/blog_img/pg_restore2.png" alt="images"><br>所以PostgreSQL 9.6已经启动了，并为postgres用户配置了一个新的密码。<br>安装好后，使用navicat连接试一下，能连接上就OK了</p><h4 id="1-2-挪动pg数据库默认的存放数据的文件夹到-data目录下"><a href="#1-2-挪动pg数据库默认的存放数据的文件夹到-data目录下" class="headerlink" title="1.2.挪动pg数据库默认的存放数据的文件夹到/data目录下"></a>1.2.挪动pg数据库默认的存放数据的文件夹到/data目录下</h4><p>这一步的操作原因是只有data目录下才有比较大的空间供我解压一个近200G的压缩文件<br><img src="/images/blog_img/pg_restore3.png" alt="images"><br>在换路径前先关掉pg数据库</p><pre><code class="shell">systemctl stop postgresql-9.6.service</code></pre><p>然后复制pg数据库默认的存放数据的文件夹到/data目录下</p><pre><code class="shell">sudo cp -rf /var/lib/pgsql/9.6/data /data/pgsql/</code></pre><p>挪动后，设置用户和权限</p><pre><code class="shell">cd /data/sudo chown -R postgres:postgres pgsql/sudo chmod 700 pgsql/</code></pre><p>修改pg数据库的service文件</p><pre><code class="shell">vim /usr/lib/systemd/system/postgresql-9.6.service</code></pre><p>将默认加载文件指向自己想要的路径</p><pre><code class="shell">Environment=PGDATA=/data/pgsql/</code></pre><p>修改PGDATA路径之后，就可以执行下面的命令让其立即生效</p><pre><code class="shell">sudo systemctl daemon-reloadsystemctl restart postgresql-9.6.service</code></pre><p>如果不报错，万事大吉，如果报错，查看报错内容，解决报错问题<br>如果报错内容说是找不到文件夹或者什么empty，那就是上面赋予权限问题没有做好，挪动一下，重新赋予权限即可<br>查看是否属于某个用户或者用户组，下面这种是对的<br><img src="/images/blog_img/pg_restore4.png" alt="images"> </p><h2 id="2-实际恢复数据"><a href="#2-实际恢复数据" class="headerlink" title="2.实际恢复数据"></a>2.实际恢复数据</h2><p>具体操作<br>为了避免解压不完全，使用一个工具screen，因为毕竟近200G的压缩文件，解压后有近700G的文件，在解压时，不让其中断。</p><pre><code class="shell">yum -y install screen</code></pre><p>创建一个会话</p><pre><code class="shell">screen -S 会话名称</code></pre><p>例如，我想在这个会话中执行解压的命令，我可以创建下面这个会话</p><pre><code class="shell">screen -S tarzxdq</code></pre><p>然后就是正常的在终端中的常规操作<br>进到某个文件夹下，执行解压命令，然后X掉这个终端，该干嘛干嘛</p><pre><code class="shell">tar -zxvf full.tar.gz</code></pre><p>查看会话列表：</p><pre><code class="shell">screen -ls</code></pre><p>进入到某个会话</p><pre><code class="shell">screen -r 会话名称screen -r tarzxdq</code></pre><p>有时在恢复 screen 时会出现 There is no screen to be resumed matching <em>**</em>，<br>遇到这种情况，先退出这个会话，然后再进入</p><pre><code class="shell">screen -d tarzxdqscreen -r tarzxdq</code></pre><pre><code class="shell">cd /data</code></pre><p>将解压好的full文件夹复制到/data目录下，其实在原来目录应该也可以，只是尝试过失败很多次，有阴影了</p><pre><code class="shell">mv restore_for_dq/full .</code></pre><p>给文件夹赋予权限</p><pre><code class="shell">sudo chown -R postgres:postgres full/sudo chmod 700 full/</code></pre><p>拿到full文件夹路径</p><pre><code class="shell">cd full/pwd</code></pre><p>修改service中PGDATA路径</p><pre><code class="shell">vim /usr/lib/systemd/system/postgresql-9.6.service</code></pre><p>生效变更</p><pre><code class="shell">systemctl daemon-reload</code></pre><p>重启数据库</p><pre><code class="shell">systemctl restart postgresql-9.6.service</code></pre><p>报错了：<br>查看报错信息</p><pre><code class="shell">journalctl -xe</code></pre><p><img src="/images/blog_img/pg_restore5.png" alt="images"> </p><p>将postgresql.conf先复制一份</p><pre><code class="shell">cp postgresql.conf postgresql.conf.bak</code></pre><p>再根据报错信息，将报错中提到的这个搜一下，全部注释掉，然后将logging_collector由on改成off<br><img src="/images/blog_img/pg_restore6.png" alt="images"> </p><p>重启一下，继续报错</p><pre><code class="shell">systemctl restart postgresql-9.6.servicejournalctl -xe</code></pre><p>再次修改</p><pre><code class="shell">vim postgresql.conf</code></pre><p>将报错中的内容注释掉，再次重启</p><pre><code class="shell">systemctl restart postgresql-9.6.servicels</code></pre><p>成功了，但是不支持postgres连接，将连接用户名改成root<br>然后将其改成信任所有连接，这样任何密码都能连上来</p><pre><code class="shell">vim pg_hba.conf将上面这行注释，下面新加一行改成信任#host    all             all             127.0.0.1/32            identhost    all             all             127.0.0.1/32            trust</code></pre><p>再次重启</p><pre><code class="shell">systemctl restart postgresql-9.6.service</code></pre><p>然后就可以连上来了<br><img src="/images/blog_img/pg_restore7.png" alt="images"> </p>]]></content>
+    
+    <summary type="html">
+    
+      pg数据库恢复
+    
+    </summary>
+    
+    
+      <category term="devops" scheme="/tec/devops/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>mongo数据库备份与还原</title>
+    <link href="/2021/03/13/mongo%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%87%E4%BB%BD%E4%B8%8E%E8%BF%98%E5%8E%9F/"/>
+    <id>/2021/03/13/mongo数据库备份与还原/</id>
+    <published>2021-03-13T13:00:01.000Z</published>
+    <updated>2024-01-11T10:39:04.562Z</updated>
+    
+    <content type="html"><![CDATA[<p>公司在20年将客户19年及之前的数据给归档了，现在他们想要做BI项目，需要将这些数据给捞出来，这篇文章主要介绍mongo数据的备份与恢复。<br>mongo及组件的安装<a href="https://blog.csdn.net/zhuchuangang/article/details/51202752" target="_blank" rel="noopener">参考文章</a></p><h2 id="1-本地模拟"><a href="#1-本地模拟" class="headerlink" title="1.本地模拟"></a>1.本地模拟</h2><p>先在虚拟机上模拟一下备份与还原，然后再实操</p><h4 id="1-1-在虚拟机上安装配置mongo"><a href="#1-1-在虚拟机上安装配置mongo" class="headerlink" title="1.1.在虚拟机上安装配置mongo"></a>1.1.在虚拟机上安装配置mongo</h4><p>下面以安装mongodb3.x为例。mongoDB正式提供packge安装支持，在他们的仓库中包含下面的包：</p><pre><code class="shell">mongodb-org：这个包会自动安装下面所有的组件包mongodb-org-server: 包含mongod，和相关配置和初始脚本mongodb-org-mongos: 包含mongosmongodb-org-shell: 包含mongo脚本mongodb-org-tools: 包含下面的mongodb工具：mongoimport bsondump,mongodump,mongoexport,mongofiles,mongoplog,mongoperf,mongorestore,mongostat和mongotop</code></pre><p>创建yum仓库文件repo</p><p>vi /etc/yum.repos.d/mongodb-org-3.2.repo</p><pre><code class="shell">[mongodb-org-3.2]name=MongoDB Repositorybaseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/3.2/x86_64/gpgcheck=1enabled=1gpgkey=https://www.mongodb.org/static/pgp/server-3.2.asc</code></pre><p>安装mongo及所有的mongodb组件：</p><pre><code class="shell">yum install -y mongodb-org-3.2.5 mongodb-org-server-3.2.5 mongodb-org-shell-3.2.5 mongodb-org-mongos-3.2.5 mongodb-org-tools-3.2.5</code></pre><p>安装完成之后，为了防止意外升级，可以在/etc/yum.conf中加入下面的配置防止意外升级：</p><pre><code class="shell">exclude=mongodb-org,mongodb-org-server,mongodb-org-shell,mongodb-org-mongos,mongodb-org-tools</code></pre><p>如果遇到启动失败的问题，可以关闭SELinux</p><pre><code class="shell">setenforce 0 </code></pre><p>启动mongo<br><code>`</code>shell script<br>systemctl start mongod</p><pre><code>配置开机启动```shellsystemctl enable mongod</code></pre><p>mongo设置账号密码（可以在navicat中通过查询的方式创建，选择admin数据库）：</p><pre><code class="js">db.createUser(    {        user:&quot;root&quot;,        pwd:&quot;123456&quot;,        roles:[{role:&quot;root&quot;,db:&quot;admin&quot;}]    });</code></pre><p>以上，就可以使用navicat进行连接mongo了<br><img src="/images/blog_img/mongo_restore1.png" alt="images">  </p><h4 id="1-2-如若卸载"><a href="#1-2-如若卸载" class="headerlink" title="1.2.如若卸载"></a>1.2.如若卸载</h4><p>停止mongo</p><pre><code class="shell">systemctl stop mongod</code></pre><p>卸载mongo<br>删除之前安装的mongodb的相关包:</p><pre><code class="shell">yum erase $(rpm -qa | grep mongodb-org)</code></pre><p>删除相关文件夹</p><pre><code class="shell">sudo rm -r /var/log/mongodbsudo rm -r /var/lib/mongo</code></pre><h4 id="1-3-mongo的简单语法"><a href="#1-3-mongo的简单语法" class="headerlink" title="1.3.mongo的简单语法"></a>1.3.mongo的简单语法</h4><p>删除集合</p><pre><code class="js">db.getCollection(&quot;pos&quot;).drop();</code></pre><p>创建集合</p><pre><code class="js">db.createCollection(&quot;pos&quot;);</code></pre><p>创建索引</p><pre><code class="js">db.getCollection(&quot;pos&quot;).createIndex({    hash: NumberInt(&quot;1&quot;)}, {    name: &quot;hash&quot;});db.getCollection(&quot;pos&quot;).createIndex({    &quot;sales_date&quot;: NumberInt(&quot;1&quot;)}, {    name: &quot;sales_date&quot;});</code></pre><h4 id="1-4-备份与还原"><a href="#1-4-备份与还原" class="headerlink" title="1.4.备份与还原"></a>1.4.备份与还原</h4><p>参考<a href="https://www.jianshu.com/p/26b504c0f26e" target="_blank" rel="noopener">文章</a><br>备份一个集合：<br>语法：</p><pre><code class="shell">mongodump --db database --collection collectionName</code></pre><p>示例：</p><pre><code class="shell">mongodump --collection pos --db saas</code></pre><p>有指向性的备份，在A机器上备份还原B机器上的数据也是可行的</p><pre><code class="shell">mongodump --host 127.0.0.1 --port 27071 --collection pos --db saas_dq_uat</code></pre><p><img src="/images/blog_img/mongo_restore2.png" alt="images"></p><p>备份除集合1、集合2之外的所有集合</p><pre><code class="shell">mongodump --db database --excludeCollection=collection1  --excludeCollection=collection2 </code></pre><p>还原一个集合</p><pre><code class="shell">mongorestore --collection collection --db database filePathmongorestore --collection pos --db saas /root/mongobackup/dump/saas/pos.bson</code></pre><p>在148机器上还原数据到147机器</p><pre><code class="shell">mongorestore --host 192.168.2.147 --port 27071 --collection pos --db saas_dq_uat /data/backup/dq_mongodb/mongo_dq_pos_bak191023/pos.bson</code></pre><p>备份满足一定条件的数据，<a href="https://blog.csdn.net/mituan1234567/article/details/48056461" target="_blank" rel="noopener">参考文章</a></p>]]></content>
+    
+    <summary type="html">
+    
+      mongo数据库备份与还原
+    
+    </summary>
+    
+    
+      <category term="devops" scheme="/tec/devops/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>kubectl 常用命令</title>
+    <link href="/2021/03/09/kubectl%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/"/>
+    <id>/2021/03/09/kubectl常用指令/</id>
+    <published>2021-03-09T13:29:01.000Z</published>
+    <updated>2024-01-11T10:39:04.562Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="查看类命令："><a href="#查看类命令：" class="headerlink" title="查看类命令："></a>查看类命令：</h2><pre><code class="shell">brew install sunny0826/tap/kubecm# 获取节点和服务版本信息kubectl get nodes# 获取节点和服务版本信息，并查看附加信息kubectl get nodes -o wide# 获取pod信息，默认是default名称空间kubectl get pod# 获取pod信息，默认是default名称空间，并查看附加信息【如：pod的IP及在哪个节点运行】kubectl get pod -o wide# 获取指定名称空间的podkubectl get pod -n kube-system# 获取指定名称空间中的指定podkubectl get pod -n kube-system podName# 获取所有名称空间的podkubectl get pod -A# 查看pod的详细信息，以yaml格式或json格式显示kubectl get pods -o yamlkubectl get pods -o json# 查看pod的标签信息kubectl get pod -A --show-labels# 根据Selector（label query）来查询podkubectl get pod -A --selector=&quot;k8s-app=kube-dns&quot;# 查看运行pod的环境变量kubectl exec podName env# 查看指定pod的日志kubectl logs -f --tail 500 -n kube-system kube-apiserver-k8s-master# 查看所有名称空间的service信息kubectl get svc -A# 查看指定名称空间的service信息kubectl get svc -n kube-system# 查看componentstatuses信息kubectl get cs# 查看所有configmaps信息kubectl get cm -A# 查看所有serviceaccounts信息kubectl get sa -A# 查看所有daemonsets信息kubectl get ds -A# 查看所有deployments信息kubectl get deploy -A# 查看所有replicasets信息kubectl get rs -A# 查看所有statefulsets信息kubectl get sts -A# 查看所有jobs信息kubectl get jobs -A# 查看所有ingresses信息kubectl get ing -A# 查看有哪些名称空间kubectl get ns# 查看pod的描述信息kubectl describe pod podNamekubectl describe pod -n kube-system kube-apiserver-k8s-master# 查看指定名称空间中指定deploy的描述信息kubectl describe deploy -n kube-system coredns# 查看node或pod的资源使用情况# 需要heapster 或metrics-server支持kubectl top nodekubectl top pod# 查看集群信息kubectl cluster-info 或kubectl cluster-info dump# 查看各组件信息【172.16.1.110为master机器】kubectl -s https://172.16.1.110:6443 get componentstatuses</code></pre><h2 id="操作类命令"><a href="#操作类命令" class="headerlink" title="操作类命令"></a>操作类命令</h2><pre><code class="shell"># 创建资源kubectl create -f xxx.yaml# 应用资源kubectl apply -f xxx.yaml# 应用资源，该目录下的所有 .yaml, .yml, 或 .json 文件都会被使用kubectl apply -f# 创建test名称空间kubectl create namespace test# 删除资源kubectl delete -f xxx.yamlkubectl delete -f# 删除指定的podkubectl delete pod podName# 删除指定名称空间的指定podkubectl delete pod -n test podName# 删除其他资源kubectl delete svc svcNamekubectl delete deploy deployNamekubectl delete ns nsName# 强制删除kubectl delete pod podName -n nsName --grace-period=0 --forcekubectl delete pod podName -n nsName --grace-period=1kubectl delete pod podName -n nsName --now# 编辑资源kubectl edit pod podName</code></pre><h2 id="进阶类命令"><a href="#进阶类命令" class="headerlink" title="进阶类命令"></a>进阶类命令</h2><pre><code class="shell"># kubectl exec：进入pod启动的容器kubectl exec -it podName -n nsName /bin/sh #进入容器kubectl exec -it podName -n nsName /bin/bash #进入容器kubectl exec -it podName -n nsName  -- sh #进入容器# kubectl label：添加label值kubectl label nodes k8s-node01 zone=north #为指定节点添加标签kubectl label nodes k8s-node01 zone- #为指定节点删除标签kubectl label pod podName -n nsName role-name=test #为指定pod添加标签kubectl label pod podName -n nsName role-name=dev --overwrite #修改lable标签值kubectl label pod podName -n nsName role-name- #删除lable标签# kubectl滚动升级； 通过kubectl apply -f myapp-deployment-v1.yaml 启动deploykubectl apply -f myapp-deployment-v2.yaml #通过配置文件滚动升级kubectl set image deploy/myapp-deployment myapp=&quot;registry.cn-beijing.aliyuncs.com/google_registry/myapp:v3&quot; #通过命令滚动升级kubectl rollout undo deploy/myapp-deployment 或者kubectl rollout undo deploy myapp-deployment #pod回滚到前一个版本kubectl rollout undo deploy/myapp-deployment --to-revision=2 #回滚到指定历史版本# kubectl scale：动态伸缩kubectl scale deploy myapp-deployment --replicas=5# 动态伸缩kubectl scale --replicas=8 -f myapp-deployment-v2.yaml #动态伸缩【根据资源类型和名称伸缩，其他配置</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      kubectl 常用命令
+    
+    </summary>
+    
+    
+      <category term="devops" scheme="/tec/devops/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>通俗易懂理解it热词</title>
+    <link href="/2021/03/01/tec/other/%E9%80%9A%E4%BF%97%E6%98%93%E6%87%82%E7%90%86%E8%A7%A3it%E7%83%AD%E8%AF%8D/"/>
+    <id>/2021/03/01/tec/other/通俗易懂理解it热词/</id>
+    <published>2021-03-01T13:29:01.000Z</published>
+    <updated>2024-01-11T10:39:04.563Z</updated>
+    
+    <content type="html"><![CDATA[<p>很多同学对<strong>热备</strong>，<strong>冷备</strong>，<strong>云备</strong>了解不深，我科普一下IT行业各种备份术语。以后别闹笑话了。  </p><p>假设你是一位女性，你有一位男朋友，于此同时你和另外一位男生暧昧不清，比朋友好，又不是恋人。你随时可以甩了现任男友，另外一位马上就能补上。这是<strong>冷备份</strong>。<br>假设你是一位女性，同时和两位男性在交往，两位都是你男朋友。并且他们还互不干涉，独立运行。这就是<strong>双机热备份</strong>。<br>假设你是一位女性，不安于男朋友给你的安全感。在遥远的男友未知的地方，和一位男生保持着联系，你告诉他你没有男朋友，你现在处于纠结期，一旦你和你男朋友分开了，你马上可以把自己感情转移到异地男人那里去。这是<strong>异地容灾备份</strong>。<br>假设你是一位女性，有一位男朋友，你又付了钱给一家婚姻介绍所，让他帮你留意好的资源，一旦你和你这位男朋友分开，婚姻介绍所马上给你安排资源，你感情不间断运行，<strong>这是云备份</strong>。</p><p>数据安全大于一切，今天你把自己备份了吗？</p><p>假设你是一位女性，你怀疑男朋友对你的忠诚，在某宝购买了一个测试忠诚度的服务。这是<strong>灾难演练</strong>。友情提醒，在没有备份的情况下，切忌进行灾难演练，说不好会让你数据血本无归。<br>假设你是一位女性，你有一位好到不能在好的闺蜜，好到你们可以共享一个男朋友，这是<strong>NAS</strong>。<br>假设你是一位女性，你男朋友活太好，你一个人根本hold不住，必须要姐妹帮忙才能稳住他。这是<strong>负载均衡</strong>，QOS。<br>假设你是一位女性，和A吃饭和B逛街和C打炮。合起来是一个完整的男朋友。这是<strong>超算集群</strong>。建议主频不高的女性不要这样做。会直接死机的。</p><p>假设你是一位女性，你的男友沉迷游戏经常不接电话无故宕机，所以当你们约好下午逛街以后你要时不时的打个电话询问，看看他是不是还能正常提供服务，这叫<strong>心跳检测</strong>。</p><p>假设你是一位女性，你想去逛街而你的男友A在打游戏不接电话，于是乎你把逛街的请求发给了替补男友B，从而保障服务不间断运行，这叫<strong>故障切换</strong>。</p><p>假设你是一位女性，你有很多需要男朋友完成的事情，于是乎你跟A逛街旅游吃饭不可描述，而B只能陪你逛街，不能拥有全部男朋友的权利，这叫<strong>主从配置 master-slave</strong>。</p><p>假设你是一位女性，你的需求太强烈以至于你的男友根本吃不消，于是呼你找了两个男朋友，一三五单号，二四六双号限行，从而减少一个男朋友所面临的压力，这叫<strong>负载均衡</strong>。</p><p>假设你是一位女性并且有多个男朋友，配合心跳检测与故障切换和负载均衡将会达到极致的体验，这叫<strong>集群LVS</strong>，注意，当需求单机可以处理的情况下不建议启用集群，会造成大量资源闲置，提高维护成本。</p><p>假设你是一位女性，你的需求越来越高导致一个男朋友集群已经处理不了了，于是乎你又新增了另外几个，这叫<strong>多集群，横行扩容，简称multi-cluster grid</strong>。</p><p>假设你是一位女性，你的男朋友身体瘦弱从而无法满足需求，于是乎你买了很多大补产品帮你男朋友升级，从而提高单机容量，这叫<strong>纵向扩容</strong>，切记，纵向扩容的成本会越来越高而效果越来越不明显。</p><p>假设你是一位女性，你跟男友经常出去游玩，情到深处想做点什么的时候却苦于没有tt，要去超市购买，于是乎你在你们经常去的地方都放置了tt，从而大幅度降低等待时间，这叫<strong>CDN</strong>。</p><p>假设你是一位女性，你的男朋友英俊潇洒风流倜傥财大气粗对你唯一，于是乎你遭到了女性B的敌视，B会以朋友名义在周末请求你男朋友修电脑，修冰箱，占用男朋友大量时间，造成男朋友无法为你服务，这叫<strong>拒绝服务攻击，简称DOS</strong>。</p><p>假设你是一位女性，你因男朋友被一位女性敌视，但是你男朋友的处理能力十分强大，处理速度已经高于她的请求速度，于是她雇佣了一票女性来轮流麻烦你的男朋友，这叫<strong>分布式拒绝服务攻击，简称DDOS</strong>。</p><p>假设你是一位女性，你发现男朋友总是在处理一些无关紧要的其它请求，于是呼你给男朋友了一个白名单，要求他只处理白名单内的请求，而拒绝其它身份不明的人的要求，这叫<strong>访问控制，也叫会话跟踪</strong>。</p><p>假设你是一位女性，你发现采取上述措施以后男朋友的处理请求并没有减少很多，于是你经过调查发现，有人伪造你的微信头像 昵称来向你的男朋友发起请求，这叫<strong>跨站点请求伪造 简称CSRF</strong>。</p><p>假设你是一位女性，你收到了一份快递，于是你要求男朋友给你取快递，当你拿到快递以后发现有人给你邮寄了一封通篇辱骂的信件，这叫<strong>跨站点脚本攻击 简称XSS</strong>，请注意，对方完全可以给你邮寄微型窃听器来窃听你的隐私。</p><p>假设你是一位女性，为了应对威胁，你要求你的男朋友，邮寄给你的邮件必须检查，这叫<strong>数据校验与过滤</strong>。</p><p>假设你是一位女性，你的男朋友太优秀而造人窥视，于是乎它们研究了一下你的男朋友，稍微修改了一点点生产出一个男朋友B 与你的男朋友百分制99相似，这不叫剽窃，这叫<strong>逆向工程，比如男朋友外挂</strong>。</p><p>假设你是一位女性，你要求你的男朋友坚持十分钟，然后十五分钟继而二十分钟以测试你男朋友的极限在哪里，这叫<strong>压力测试</strong>。</p><p>压力测试的目的是查看男朋友是否可以处理需求从而决定是否启用男朋友集群或提升男朋友处理能力，不要对线上运行的男朋友做压力测试，可能会造成宕机的后果，会血本无归的</p><p>假设你是一位女性，为了保证你男朋友的正常运行，于是乎你每天查看他的微信微博等社交资料来寻找可能产生问题的线索，这叫<strong>数据分析</strong>。</p><p>假设你是一位女性，你的男朋友属于社交活跃选手，每天的微博知乎微信生产了大量信息，你发现自己的分析速度远远低于他生的速度，于是乎你找来你的闺蜜一起分析，这叫<strong>并行计算</strong>。</p><p>假设你是一位女性，你的男朋友太能折腾处处留情产生了天量的待处理信息，你和你的闺蜜们已经累趴也没赶上他创造的速度，于是你付费在知乎上找了20个小伙伴帮你一起分析，这叫<strong>云计算</strong>。</p><p>假设你是一位女性，在使用云计算后获得了大量整理好的男朋友数据，这些数据如：<br>地点 活跃时间段 活跃次数<br>如家 xxxx 123次<br>汉庭 xxxx 45次<br>…<br>这叫<strong>数据统计</strong>。</p><p>假设你是一位女性，你在得到男朋友经常出没的地点后，根据酒店，敏感时间段等信息确定男朋友因该是出轨了，这叫<strong>数据挖掘</strong>。</p><p>假设你是一位女性，在分析男友的数据后，得知他下午又要出去开房，于是乎你在他准备出门前给他发了个短信，问他有没有带tt，没有的话可以在我这里买，这叫<strong>精准推送，需要配合数据挖掘</strong>。</p><p>假如你是一位女性，你的男朋友总该出去浪而各种出问题，于是乎你租了间屋子并准备好了所有需要的东西并告诉他，以后不用找酒店了，直接来我这屋子吧，什么都准备好了，这叫<strong>容器</strong>。</p><p>以上转载自<a href="https://www.zhihu.com/question/263789393/answer/274245200" target="_blank" rel="noopener">一个女生不主动联系你还有机会吗？ - 我傻笑你跑掉的回答 - 知乎</a></p><hr>]]></content>
+    
+    <summary type="html">
+    
+      通俗易懂理解it热词
+    
+    </summary>
+    
+    
+      <category term="other" scheme="/tec/other/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>01-为什么要做CI/CD？</title>
+    <link href="/2020/12/04/1.%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%81%9ACICD/"/>
+    <id>/2020/12/04/1.为什么要做CICD/</id>
+    <published>2020-12-04T06:03:30.000Z</published>
+    <updated>2024-01-11T10:39:04.561Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="背景-传统的应用开发发布模式"><a href="#背景-传统的应用开发发布模式" class="headerlink" title="背景-传统的应用开发发布模式"></a>背景-传统的应用开发发布模式</h2><p><strong>开发团队</strong> 在开发环境中完成软件开发，单元测试，测试通过，提交到代码版本管理库。</p><p><strong>运维团队</strong> 把应用部署到测试环境，供QA团队测试，测试通过后部署生产环境。</p><p><strong>QA 团队</strong> 进行测试，测试通过后通知部署人员发布到生产环境。</p><p><img src="/images/blog_img/01_1.png" alt="images"></p><h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p><strong>错误发现不及时</strong>  很多 错误在项目的早期可能就存在，到最后集成的时候才发现问题。</p><p><strong>人工低级错误发生</strong> 产品和服务交付中的关键活动全都需要手动操作。</p><p><strong>团队工作效率低</strong> 需要等待他人的工作完成后才能进行自己的工作。</p><p><strong>开发运维对立 </strong>  开发人员想要快速更新，运维人员追求稳定，各自的针对的方向不同。</p><p>经过上述问题我们需要作出改变，如何改变？</p><hr><h2 id="持续集成与持续交付"><a href="#持续集成与持续交付" class="headerlink" title="持续集成与持续交付"></a>持续集成与持续交付</h2><p>软件开发的连续方法基于自动执行脚本，以最大程度地减少在开发应用程序时引入错误的机会。从开发新代码到部署新代码，他们几乎不需要人工干预，甚至根本不需要干预。</p><p>它涉及到在每次小的迭代中就不断地构建，测试和部署代码更改，从而减少了基于错误或失败的先前版本开发新代码的机会。</p><p>此方法有三种主要方法，每种方法都将根据最适合您的策略的方式进行应用。</p><h3 id="持续集成-（CI）"><a href="#持续集成-（CI）" class="headerlink" title="持续集成 （CI）"></a>持续集成 （CI）</h3><p>持续合并开发人员正在开发编写的所有代码的一种做法。通常一天内进行多次合并和提交代码，从存储库或生产环境中进行构建和自动化测试，以确保没有集成问题并及早发现任何问题。</p><p><strong>开发人员提交代码的时候一般先在本地测试验证，只要开发人员提交代码到版本控制系统就会触发一条提交流水线，对本次提交进行验证。</strong></p><h3 id="持续交付-（CD）"><a href="#持续交付-（CD）" class="headerlink" title="持续交付 （CD）"></a>持续交付 （CD）</h3><p><a href="https://continuousdelivery.com/" target="_blank" rel="noopener">持续交付</a>是超越持续集成的一步。不仅会在推送到代码库的每次代码更改时都进行构建和测试，而且，作为附加步骤，即使部署是手动触发的，它也可以连续部署。此方法可确保自动检查代码，但需要人工干预才能从策略上手动触发更改的部署。</p><h3 id="持续部署-CD"><a href="#持续部署-CD" class="headerlink" title="持续部署   (CD)"></a>持续部署   (CD)</h3><p>通常可以通过将更改自动推送到发布系统来随时将软件发布到生产环境中。持续部署 会更进一步，并自动将更改推送到生产中。类似于持续交付，<a href="https://www.airpair.com/continuous-deployment/posts/continuous-deployment-for-practical-people" target="_blank" rel="noopener">持续部署</a>也是超越持续集成的又一步。不同之处在于，您无需将其手动部署，而是将其设置为自动部署。部署您的应用程序完全不需要人工干预。</p><hr><h2 id="CICD的价值体现"><a href="#CICD的价值体现" class="headerlink" title="CICD的价值体现"></a>CICD的价值体现</h2><ul><li>尽早反馈，尽早发现错误。</li><li>减少集成问题，每次发现问题当时解决，避免问题堆积。</li><li>每次更改都能成功发布，降低发布风险。</li><li>更加频繁的交付价值，客户反馈。</li></ul><hr><h2 id="推荐常用的CI-CD工具"><a href="#推荐常用的CI-CD工具" class="headerlink" title="推荐常用的CI/CD工具"></a>推荐常用的CI/CD工具</h2><h3 id="Jenkins"><a href="#Jenkins" class="headerlink" title="Jenkins"></a>Jenkins</h3><p>专业的CI工具，可扩展自动化服务器、安装配置简单、丰富的插件库、分布式架构设计、支持所有的平台、可视化的管理页面。</p><p><img src="/images/blog_img/01_3.png" alt="images"></p><h3 id="GitLab"><a href="#GitLab" class="headerlink" title="GitLab"></a>GitLab</h3><p>端到端DevOps工具，常用功能：代码审查、问题跟踪、动态订阅、易于扩展、项目wiki、多角色项目管理、项目代码在线编译预览、CI工具集成。</p><p><img src="/images/blog_img/01_2.png" alt="images"></p><p>提交合并代码集成 ：通过git push 进行操作或者在GitLab Web页面操作。</p><p>发布应用到服务器 ： 获取制品库中的应用，然后用salt、ansible发布部署到服务器。</p><p>完全自动化： 提交代码-&gt; 构建部署 -&gt; 发布</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;背景-传统的应用开发发布模式&quot;&gt;&lt;a href=&quot;#背景-传统的应用开发发布模式&quot; class=&quot;headerlink&quot; title=&quot;背景-传统的应用开发发布模式&quot;&gt;&lt;/a&gt;背景-传统的应用开发发布模式&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;开发团队&lt;/strong&gt; 
+      
+    
+    </summary>
+    
+    
+      <category term="devops" scheme="/tec/devops/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>python向Excel中插入一列内容</title>
+    <link href="/2020/07/20/python%E5%90%91Excel%E4%B8%AD%E6%8F%92%E5%85%A5%E4%B8%80%E5%88%97%E5%86%85%E5%AE%B9/"/>
+    <id>/2020/07/20/python向Excel中插入一列内容/</id>
+    <published>2020-07-20T07:29:01.000Z</published>
+    <updated>2024-01-11T10:39:04.562Z</updated>
+    
+    <content type="html"><![CDATA[<p>在第一列插入一列日期：<br><img src="/images/blog_img/clipboard1.png" alt="images"><br>执行代码后如下所示：<br><img src="/images/blog_img/clipboard1.png" alt="images"> </p><pre><code class="python"># coding:utf-8from openpyxl import Workbook, load_workbookfile_info = &#39;./excel_test/1.xlsx&#39;wb = load_workbook(file_info)ws = wb.worksheets[0]ws.insert_cols(1)for index, row in enumerate(ws.rows):    if index == 0:        row[0].value = &#39;日期&#39;    else:        row[0].value = &#39;2020-08-27&#39;wb.save(&#39;./excel_test/3.xlsx&#39;)# row[0]与insert_cols(1)有对应关系，两者相差1</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;在第一列插入一列日期：&lt;br&gt;&lt;img src=&quot;/images/blog_img/clipboard1.png&quot; alt=&quot;images&quot;&gt;&lt;br&gt;执行代码后如下所示：&lt;br&gt;&lt;img src=&quot;/images/blog_img/clipboard1.png&quot; alt=&quot;
+      
+    
+    </summary>
+    
+      <category term="python" scheme="/essay/python/"/>
+    
+    
+      <category term="code" scheme="/tec/code/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>批量修改文件名</title>
+    <link href="/2020/07/20/tec/software/%E6%89%B9%E9%87%8F%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E5%90%8D/"/>
+    <id>/2020/07/20/tec/software/批量修改文件名/</id>
+    <published>2020-07-20T07:29:01.000Z</published>
+    <updated>2024-01-11T10:39:04.563Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="批量修改文件名"><a href="#批量修改文件名" class="headerlink" title="批量修改文件名"></a>批量修改文件名</h2><p>这篇文章推荐一个修改文件名的<a href="https://www.binfensoft.cn/archives/353" target="_blank" rel="noopener">神器</a>，<br>在这里举个小栗子，我想将下面文件夹下的图片带括号的名字给改成下划线的名字，比如将01 (01).png改成01_01.png，那么这个神器就可以帮助我快速达成我所想要的。<br><img src="/images/blog_img/ch_file_name.png" alt="images">  </p><p>在上面的超链接中下载该软件，下载后双击可执行文件，找到要修改的文件所在的文件夹，点下替换<br><img src="/images/blog_img/ch_file_name2.png" alt="images"><br>然后在“替换文件中的”中填写想要被替换的符号为自己想要的符号，然后点下预览，就可以看到效果了，如果是自己想要的，就点执行修改。<br><img src="/images/blog_img/ch_file_name3.png" alt="images"><br>执行修改后，可以看到前面的空格和括号已经被替换成了下划线，然后再把后面的括号替换成空就达到自己的目的了。<br><img src="/images/blog_img/ch_file_name4.png" alt="images"></p><hr>]]></content>
+    
+    <summary type="html">
+    
+      批量修改文件名
+    
+    </summary>
+    
+    
+      <category term="software" scheme="/tec/software/"/>
+    
+  </entry>
+  
+</feed>
